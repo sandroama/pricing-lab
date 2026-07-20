@@ -1,0 +1,12 @@
+# Self-contained deps for the Space (app.py adds ../src and the project root
+# to sys.path, so the pricelab package itself is NOT pip-installed — only
+# third-party imports). Transitive third-party surface of dashboard/app.py:
+# streamlit, pandas, numpy, scipy (pricelab.estimators.ate uses scipy.stats;
+# the simulator uses numpy/pandas). Phase 4–6 tabs read committed JSONs only,
+# so econml/xgboost are NOT needed by the Space.
+# HF Spaces reads requirements.txt from the Space repo ROOT — copy this file
+# there when deploying (see DEPLOYMENT.md).
+streamlit>=1.39.0
+pandas>=2.2.0
+numpy>=1.26.0
+scipy>=1.13.0

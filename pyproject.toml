@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pricelab"
+version = "0.1.0"
+description = "Causal-first dynamic pricing lab — switchback designs, double ML, uplift modeling"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+dependencies = [
+    # Core numerics
+    "numpy>=1.26.0",
+    "pandas>=2.2.0",
+    "scipy>=1.13.0",
+
+    # ML
+    "scikit-learn>=1.5.0",
+    "xgboost>=2.1.0",
+
+    # API + serving
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.31.0",
+
+    # Validation / config
+    "pydantic>=2.9.0",
+    "loguru>=0.7.2",
+    "hydra-core>=1.3.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-cov>=5.0.0",
+    "ruff>=0.6.0",
+    "mypy>=1.11.0",
+    "ipython>=8.27.0",
+]
+ui = [
+    "streamlit>=1.39.0",
+    "plotly>=5.24.0",
+    "matplotlib>=3.9.0",
+]
+causal = [
+    # Optional — Phase 4+ heavy causal libraries.
+    "econml>=0.15.0",
+    "dowhy>=0.12",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "slow: tests >2s (default-deselected by `make test`)",
+    "requires_econml: needs `pip install -e \".[causal]\"`",
+]
+addopts = "--strict-markers"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.mypy]
+strict = true
+ignore_missing_imports = true

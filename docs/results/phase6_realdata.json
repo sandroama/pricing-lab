@@ -1,0 +1,85 @@
+{
+  "phase": 6,
+  "dataset": "Citi Bike system data, Jersey City file, 2024-09 (official S3 bucket)",
+  "data_url": "https://s3.amazonaws.com/tripdata/JC-202409-citibike-tripdata.csv.zip",
+  "causal_target": "electric-bike (vs classic) effect on trip duration, minutes",
+  "accounting": {
+    "n_raw": 115558,
+    "n_kept": 115201,
+    "n_dropped_duration": 357
+  },
+  "composition": {
+    "member_share_ebike": 0.6902864816472695,
+    "member_share_classic": 0.8084307092007222,
+    "weekend_share_ebike": 0.26827812593255745,
+    "weekend_share_classic": 0.26143085448620823,
+    "mean_hour_ebike": 14.113190092509699,
+    "mean_hour_classic": 13.927876133745668,
+    "ebike_share": 0.5817657832831312,
+    "mean_duration_member": 7.93879804374868,
+    "mean_duration_casual": 13.005630233656806
+  },
+  "full_month_naive": {
+    "point": -1.7476080067157724,
+    "se": 0.06327579056030604
+  },
+  "n_folds": 5,
+  "folds": [
+    {
+      "fold": 202436,
+      "n_train": 2793,
+      "n_test": 25714,
+      "naive_point": -2.3151292134657506,
+      "naive_se": 0.14944678556726704,
+      "adjusted_point": -2.6505032232420978,
+      "adjusted_se": 0.14860814947239315
+    },
+    {
+      "fold": 202437,
+      "n_train": 28507,
+      "n_test": 29087,
+      "naive_point": -1.821879742693147,
+      "naive_se": 0.13158789051583322,
+      "adjusted_point": -2.49502570301821,
+      "adjusted_se": 0.12535736477478165
+    },
+    {
+      "fold": 202438,
+      "n_train": 57594,
+      "n_test": 29636,
+      "naive_point": -1.603374065116812,
+      "naive_se": 0.11934062044080752,
+      "adjusted_point": -2.17689153415482,
+      "adjusted_se": 0.11260715133887424
+    },
+    {
+      "fold": 202439,
+      "n_train": 87230,
+      "n_test": 24089,
+      "naive_point": -1.234028649817196,
+      "naive_se": 0.1110207636133577,
+      "adjusted_point": -1.8287928518156458,
+      "adjusted_se": 0.1074545600893279
+    },
+    {
+      "fold": 202440,
+      "n_train": 111319,
+      "n_test": 3882,
+      "naive_point": -1.0867885464080143,
+      "naive_se": 0.2771875296391529,
+      "adjusted_point": -1.5725883355194745,
+      "adjusted_se": 0.27061885462300417
+    }
+  ],
+  "pooled_naive_mean": -1.612240043500184,
+  "pooled_naive_ci95_over_folds": [
+    -2.2196484821343465,
+    -1.0048316048660215
+  ],
+  "pooled_adjusted_mean": -2.1447603295500497,
+  "pooled_adjusted_ci95_over_folds": [
+    -2.7023733550825098,
+    -1.5871473040175896
+  ],
+  "naive_minus_adjusted": 0.5325202860498657
+}

@@ -1,0 +1,636 @@
+{
+  "phase": "2b",
+  "design": "24-hour switchback; 28 randomized blocks; 8 zones",
+  "n_replicates": 20,
+  "estimators": [
+    "switchback_hajek",
+    "switchback_regression_adjusted"
+  ],
+  "adjustment": "centered zone/hour fixed effects with treatment interactions",
+  "uncertainty": "CR1 block-clustered sandwich; t(n_blocks-2) interval",
+  "hajek_se": {
+    "mean": 2.0209181716682774,
+    "median": 2.0892835006248,
+    "min": 1.4546237768212187,
+    "max": 2.750573769560834
+  },
+  "adjusted_se": {
+    "mean": 1.9944905372250035,
+    "median": 2.061961849814315,
+    "min": 1.4356015987017625,
+    "max": 2.7146043972674474
+  },
+  "se_ratio_adjusted_to_hajek": {
+    "mean": 0.9869229566967285,
+    "median": 0.9869229566967279,
+    "min": 0.9869229566967257,
+    "max": 0.9869229566967337
+  },
+  "hajek_rmse": 1.9454002057601303,
+  "adjusted_rmse": 1.9454002057594295,
+  "hajek_coverage": 0.95,
+  "adjusted_coverage": 0.95,
+  "verdict": "Zone/hour adjustment did not materially improve precision for daily blocks.",
+  "replicates": [
+    {
+      "seed": 200,
+      "true_ate": 24.841477730452244,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 21.20151508888125,
+        "standard_error": 2.03190478164292,
+        "ci95_low": 17.21898171686113,
+        "ci95_high": 25.184048460901373,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 21.201515088883053,
+        "standard_error": 2.0053334748252554,
+        "ci95_low": 17.079493097083734,
+        "ci95_high": 25.32353708068237,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": -3.6399626415709925,
+      "adjusted_bias": -3.6399626415691912,
+      "hajek_covers_truth": true,
+      "adjusted_covers_truth": true,
+      "se_ratio_adjusted_to_hajek": 0.9869229566967306
+    },
+    {
+      "seed": 201,
+      "true_ate": 50.14353608335155,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 46.07503601448525,
+        "standard_error": 1.6770081022623033,
+        "ci95_low": 42.788100134051135,
+        "ci95_high": 49.361971894919364,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 46.075036014487246,
+        "standard_error": 1.65507779468908,
+        "ci95_low": 42.672974884259716,
+        "ci95_high": 49.477097144714776,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": -4.0685000688663,
+      "adjusted_bias": -4.068500068864303,
+      "hajek_covers_truth": false,
+      "adjusted_covers_truth": false,
+      "se_ratio_adjusted_to_hajek": 0.9869229566967272
+    },
+    {
+      "seed": 202,
+      "true_ate": 48.482952206594916,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 47.831869776725625,
+        "standard_error": 2.082903632028611,
+        "ci95_low": 43.74937865794955,
+        "ci95_high": 51.9143608955017,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 47.83186977672783,
+        "standard_error": 2.05566541103603,
+        "ci95_low": 43.60638900834336,
+        "ci95_high": 52.05735054511229,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": -0.651082429869291,
+      "adjusted_bias": -0.6510824298670883,
+      "hajek_covers_truth": true,
+      "adjusted_covers_truth": true,
+      "se_ratio_adjusted_to_hajek": 0.9869229566967277
+    },
+    {
+      "seed": 203,
+      "true_ate": 27.806067773318652,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 28.461288753298277,
+        "standard_error": 2.0956633692209885,
+        "ci95_low": 24.35378854962514,
+        "ci95_high": 32.56878895697142,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 28.461288753297197,
+        "standard_error": 2.0682582885926006,
+        "ci95_low": 24.20992295437798,
+        "ci95_high": 32.712654552216414,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": 0.6552209799796245,
+      "adjusted_bias": 0.6552209799785444,
+      "hajek_covers_truth": true,
+      "adjusted_covers_truth": true,
+      "se_ratio_adjusted_to_hajek": 0.986922956696726
+    },
+    {
+      "seed": 204,
+      "true_ate": 2.0082639936845155,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 5.0484921038380435,
+        "standard_error": 2.20315810378256,
+        "ci95_low": 0.7303022204242255,
+        "ci95_high": 9.366681987251862,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 5.048492103839799,
+        "standard_error": 2.17434730985544,
+        "ci95_low": 0.5790571985980044,
+        "ci95_high": 9.517927009081594,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": 3.040228110153528,
+      "adjusted_bias": 3.040228110155284,
+      "hajek_covers_truth": true,
+      "adjusted_covers_truth": true,
+      "se_ratio_adjusted_to_hajek": 0.9869229566967276
+    },
+    {
+      "seed": 205,
+      "true_ate": 15.8460989032504,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 18.143173073642515,
+        "standard_error": 2.260351056114419,
+        "ci95_low": 13.712885003658254,
+        "ci95_high": 22.573461143626776,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 18.14317307364157,
+        "standard_error": 2.2307923474730194,
+        "ci95_low": 13.557713731911537,
+        "ci95_high": 22.728632415371603,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": 2.297074170392115,
+      "adjusted_bias": 2.29707417039117,
+      "hajek_covers_truth": true,
+      "adjusted_covers_truth": true,
+      "se_ratio_adjusted_to_hajek": 0.9869229566967304
+    },
+    {
+      "seed": 206,
+      "true_ate": 68.2000703235133,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 67.563975369829,
+        "standard_error": 2.036607404099526,
+        "ci95_low": 63.57222485779393,
+        "ci95_high": 71.55572588186406,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 67.5639753698315,
+        "standard_error": 2.0099746008843495,
+        "ci95_low": 63.43241340678925,
+        "ci95_high": 71.69553733287374,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": -0.6360949536843066,
+      "adjusted_bias": -0.6360949536818055,
+      "hajek_covers_truth": true,
+      "adjusted_covers_truth": true,
+      "se_ratio_adjusted_to_hajek": 0.9869229566967268
+    },
+    {
+      "seed": 207,
+      "true_ate": 53.649035274843584,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 54.91970484232536,
+        "standard_error": 2.199418000256548,
+        "ci95_low": 50.60884556182253,
+        "ci95_high": 59.23056412282819,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 54.91970484232468,
+        "standard_error": 2.1706561158251922,
+        "ci95_low": 50.4578572950758,
+        "ci95_high": 59.38155238957356,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": 1.2706695674817752,
+      "adjusted_bias": 1.270669567481093,
+      "hajek_covers_truth": true,
+      "adjusted_covers_truth": true,
+      "se_ratio_adjusted_to_hajek": 0.9869229566967257
+    },
+    {
+      "seed": 208,
+      "true_ate": 84.97463880903823,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 85.39372129462981,
+        "standard_error": 1.7358953453775563,
+        "ci95_low": 81.9913664176898,
+        "ci95_high": 88.79607617156982,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 85.39372129463219,
+        "standard_error": 1.7131949667761022,
+        "ci95_low": 81.8721986062891,
+        "ci95_high": 88.91524398297527,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": 0.4190824855915878,
+      "adjusted_bias": 0.419082485593961,
+      "hajek_covers_truth": true,
+      "adjusted_covers_truth": true,
+      "se_ratio_adjusted_to_hajek": 0.9869229566967259
+    },
+    {
+      "seed": 209,
+      "true_ate": 33.8189854886342,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 31.98561931790698,
+        "standard_error": 2.1597839781706574,
+        "ci95_low": 27.752442720692493,
+        "ci95_high": 36.21879591512147,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 31.98561931790889,
+        "standard_error": 2.1315403895624083,
+        "ci95_low": 27.60417529750706,
+        "ci95_high": 36.367063338310714,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": -1.833366170727217,
+      "adjusted_bias": -1.8333661707253093,
+      "hajek_covers_truth": true,
+      "adjusted_covers_truth": true,
+      "se_ratio_adjusted_to_hajek": 0.9869229566967288
+    },
+    {
+      "seed": 210,
+      "true_ate": 34.280178919219026,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 32.68184945127109,
+        "standard_error": 2.1737592890450506,
+        "ci95_low": 28.421281244742794,
+        "ci95_high": 36.94241765779939,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 32.6818494512728,
+        "standard_error": 2.1453329446913196,
+        "ci95_low": 28.272054427769387,
+        "ci95_high": 37.09164447477621,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": -1.5983294679479343,
+      "adjusted_bias": -1.598329467946229,
+      "hajek_covers_truth": true,
+      "adjusted_covers_truth": true,
+      "se_ratio_adjusted_to_hajek": 0.9869229566967285
+    },
+    {
+      "seed": 211,
+      "true_ate": 49.028289333123595,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 49.60611076117766,
+        "standard_error": 2.000955521305293,
+        "ci95_low": 45.68423793941928,
+        "ci95_high": 53.52798358293604,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 49.60611076117946,
+        "standard_error": 1.974788939305265,
+        "ci95_low": 45.54687396133115,
+        "ci95_high": 53.665347561027765,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": 0.5778214280540652,
+      "adjusted_bias": 0.5778214280558629,
+      "hajek_covers_truth": true,
+      "adjusted_covers_truth": true,
+      "se_ratio_adjusted_to_hajek": 0.9869229566967292
+    },
+    {
+      "seed": 212,
+      "true_ate": 38.08935507058446,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 37.00655469385947,
+        "standard_error": 2.1087432141504374,
+        "ci95_low": 32.873417994124615,
+        "ci95_high": 41.139691393594326,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 37.00655469385854,
+        "standard_error": 2.0811670878235113,
+        "ci95_low": 32.728654478102655,
+        "ci95_high": 41.284454909614425,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": -1.0828003767249896,
+      "adjusted_bias": -1.0828003767259204,
+      "hajek_covers_truth": true,
+      "adjusted_covers_truth": true,
+      "se_ratio_adjusted_to_hajek": 0.9869229566967281
+    },
+    {
+      "seed": 213,
+      "true_ate": 44.97024459340284,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 42.865138388481796,
+        "standard_error": 1.9269119776432875,
+        "ci95_low": 39.08839091230095,
+        "ci95_high": 46.64188586466264,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 42.865138388483956,
+        "standard_error": 1.9017136662700638,
+        "ci95_low": 38.95610996359637,
+        "ci95_high": 46.774166813371544,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": -2.105106204921043,
+      "adjusted_bias": -2.105106204918883,
+      "hajek_covers_truth": true,
+      "adjusted_covers_truth": true,
+      "se_ratio_adjusted_to_hajek": 0.9869229566967337
+    },
+    {
+      "seed": 214,
+      "true_ate": 27.63259571781398,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 29.62412997396882,
+        "standard_error": 1.6592177344315773,
+        "ci95_low": 26.372063214482928,
+        "ci95_high": 32.87619673345471,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 29.62412997397048,
+        "standard_error": 1.637520072268855,
+        "ci95_low": 26.258159259053244,
+        "ci95_high": 32.990100688887715,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": 1.9915342561548393,
+      "adjusted_bias": 1.9915342561564984,
+      "hajek_covers_truth": true,
+      "adjusted_covers_truth": true,
+      "se_ratio_adjusted_to_hajek": 0.9869229566967258
+    },
+    {
+      "seed": 215,
+      "true_ate": 46.528173811113774,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 47.9541750201513,
+        "standard_error": 1.5723536240902658,
+        "ci95_low": 44.87236191693437,
+        "ci95_high": 51.03598812336822,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 47.95417502015323,
+        "standard_error": 1.5517918876599883,
+        "ci95_low": 44.764421112420926,
+        "ci95_high": 51.14392892788553,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": 1.4260012090375227,
+      "adjusted_bias": 1.4260012090394554,
+      "hajek_covers_truth": true,
+      "adjusted_covers_truth": true,
+      "se_ratio_adjusted_to_hajek": 0.9869229566967328
+    },
+    {
+      "seed": 216,
+      "true_ate": 69.43995236396081,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 71.51871761327948,
+        "standard_error": 2.112668556301084,
+        "ci95_low": 67.37788724292935,
+        "ci95_high": 75.65954798362961,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 71.51871761327898,
+        "standard_error": 2.085041098104872,
+        "ci95_low": 67.23285425534415,
+        "ci95_high": 75.80458097121381,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": 2.078765249318664,
+      "adjusted_bias": 2.0787652493181668,
+      "hajek_covers_truth": true,
+      "adjusted_covers_truth": true,
+      "se_ratio_adjusted_to_hajek": 0.9869229566967272
+    },
+    {
+      "seed": 217,
+      "true_ate": 78.75144792984027,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 76.89583687260551,
+        "standard_error": 1.4546237768212187,
+        "ci95_low": 74.04477427003593,
+        "ci95_high": 79.7468994751751,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 76.89583687260782,
+        "standard_error": 1.4356015987017625,
+        "ci95_low": 73.94491552431357,
+        "ci95_high": 79.84675822090206,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": -1.8556110572347535,
+      "adjusted_bias": -1.8556110572324513,
+      "hajek_covers_truth": true,
+      "adjusted_covers_truth": true,
+      "se_ratio_adjusted_to_hajek": 0.9869229566967307
+    },
+    {
+      "seed": 218,
+      "true_ate": 29.2408698316548,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 28.322321923503296,
+        "standard_error": 2.750573769560834,
+        "ci95_low": 22.93119733516406,
+        "ci95_high": 33.713446511842534,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 28.322321923504695,
+        "standard_error": 2.7146043972674474,
+        "ci95_low": 22.742372670652063,
+        "ci95_high": 33.90227117635733,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": -0.9185479081515027,
+      "adjusted_bias": -0.9185479081501029,
+      "hajek_covers_truth": true,
+      "adjusted_covers_truth": true,
+      "se_ratio_adjusted_to_hajek": 0.9869229566967297
+    },
+    {
+      "seed": 219,
+      "true_ate": 35.745255656974535,
+      "hajek": {
+        "estimator": "switchback_hajek",
+        "point_estimate": 34.38131285208249,
+        "standard_error": 2.175862197060416,
+        "ci95_low": 30.11662294584407,
+        "ci95_high": 38.646002758320904,
+        "n_treatment": 14,
+        "n_control": 14
+      },
+      "adjusted": {
+        "estimator": "switchback_regression_adjusted",
+        "point_estimate": 34.38131285208462,
+        "standard_error": 2.1474083528875028,
+        "ci95_low": 29.96725176593675,
+        "ci95_high": 38.79537393823249,
+        "n_treatment": 14,
+        "n_control": 14,
+        "degrees_of_freedom": 26,
+        "critical_value": 2.0555294386428735,
+        "uncertainty_method": "CR1 block-clustered sandwich with small-sample t interval"
+      },
+      "hajek_bias": -1.3639428048920479,
+      "adjusted_bias": -1.3639428048899163,
+      "hajek_covers_truth": true,
+      "adjusted_covers_truth": true,
+      "se_ratio_adjusted_to_hajek": 0.9869229566967272
+    }
+  ]
+}

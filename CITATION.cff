@@ -1,0 +1,48 @@
+cff-version: 1.2.0
+title: "pricing-lab — Switchback Designs for Dynamic Pricing"
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - family-names: Amaglobeli
+    given-names: Sandro
+    affiliation: Northeastern University
+date-released: 2026-05-12
+license: MIT
+url: "https://github.com/sandroama/pricing-lab"
+version: "0.1.0"
+abstract: >-
+  A causal-inference toolkit comparing naive A/B testing against switchback
+  randomization for dynamic pricing under spillover. Demonstrates that
+  switchback Hájek estimators keep bias bounded (constant 2.2%) across spillover
+  regimes while naive A/B bias scales monotonically from 14% (no spillover) to
+  82% (heavy spillover) — quantifying SUTVA violation in a setting practitioners
+  ignore.
+keywords:
+  - causal inference
+  - switchback experiments
+  - SUTVA
+  - dynamic pricing
+  - spillover effects
+  - Hájek estimator
+  - A/B testing
+references:
+  - type: article
+    authors:
+      - family-names: Bojinov
+        given-names: Iavor
+      - family-names: Simchi-Levi
+        given-names: David
+      - family-names: Zhao
+        given-names: Jinglong
+    title: "Design and Analysis of Switchback Experiments"
+    year: 2023
+    url: "https://arxiv.org/abs/2009.00148"
+  - type: article
+    authors:
+      - family-names: Hudgens
+        given-names: Michael G.
+      - family-names: Halloran
+        given-names: M. Elizabeth
+    title: "Toward Causal Inference With Interference"
+    year: 2008
+    url: "https://doi.org/10.1198/016214508000000292"

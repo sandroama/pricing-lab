@@ -1,0 +1,3658 @@
+{
+  "phase": "3b",
+  "claim": "hour-of-day stratification removes the block_hours=4 aliasing spike",
+  "spillover_strength": 0.7,
+  "n_zones": 8,
+  "n_time_buckets": 672,
+  "n_seeds": 50,
+  "seeds": [
+    400,
+    401,
+    402,
+    403,
+    404,
+    405,
+    406,
+    407,
+    408,
+    409,
+    410,
+    411,
+    412,
+    413,
+    414,
+    415,
+    416,
+    417,
+    418,
+    419,
+    420,
+    421,
+    422,
+    423,
+    424,
+    425,
+    426,
+    427,
+    428,
+    429,
+    430,
+    431,
+    432,
+    433,
+    434,
+    435,
+    436,
+    437,
+    438,
+    439,
+    440,
+    441,
+    442,
+    443,
+    444,
+    445,
+    446,
+    447,
+    448,
+    449
+  ],
+  "arms": {
+    "alternating_4h_hajek": {
+      "randomization": "alternating",
+      "block_hours": 4,
+      "estimator": "hajek",
+      "n_seeds": 50,
+      "n_identified": 50,
+      "mean_bias": 31.462139001571703,
+      "mean_abs_bias_pct": 12.560454010914848,
+      "max_abs_bias_pct": 142.39679836885787,
+      "rmse": 261.2048216969162,
+      "mean_se": 63.504699784731066,
+      "coverage": 0.0,
+      "mean_abs_diurnal_gap": 0.35493604296540504
+    },
+    "alternating_4h_adjusted": {
+      "randomization": "alternating",
+      "block_hours": 4,
+      "estimator": "adjusted",
+      "n_seeds": 50,
+      "n_identified": 0,
+      "failure_mode": "regression-adjustment design matrix is rank deficient"
+    },
+    "iid_4h_hajek": {
+      "randomization": "iid",
+      "block_hours": 4,
+      "estimator": "hajek",
+      "n_seeds": 50,
+      "n_identified": 50,
+      "mean_bias": -6.356983443201404,
+      "mean_abs_bias_pct": 3.0222504906314027,
+      "max_abs_bias_pct": 47.01383819348257,
+      "rmse": 65.18829997092668,
+      "mean_se": 66.56637137236032,
+      "coverage": 0.96,
+      "mean_abs_diurnal_gap": 0.06267484522054599
+    },
+    "iid_4h_adjusted": {
+      "randomization": "iid",
+      "block_hours": 4,
+      "estimator": "adjusted",
+      "n_seeds": 50,
+      "n_identified": 50,
+      "mean_bias": 0.5808190793250955,
+      "mean_abs_bias_pct": 0.10282450576913993,
+      "max_abs_bias_pct": 1.7486479419533874,
+      "rmse": 2.1877069334333417,
+      "mean_se": 2.0253628856902703,
+      "coverage": 0.9,
+      "mean_abs_diurnal_gap": 0.06267484522054599
+    },
+    "stratified_4h_hajek": {
+      "randomization": "stratified_daily",
+      "block_hours": 4,
+      "estimator": "hajek",
+      "n_seeds": 50,
+      "n_identified": 50,
+      "mean_bias": -8.214118073781355,
+      "mean_abs_bias_pct": 2.7277485237019024,
+      "max_abs_bias_pct": 59.29839383919252,
+      "rmse": 81.59012562238183,
+      "mean_se": 66.16910858574147,
+      "coverage": 0.86,
+      "mean_abs_diurnal_gap": 0.07575046202785062
+    },
+    "stratified_4h_adjusted": {
+      "randomization": "stratified_daily",
+      "block_hours": 4,
+      "estimator": "adjusted",
+      "n_seeds": 50,
+      "n_identified": 50,
+      "mean_bias": -0.1480524985066675,
+      "mean_abs_bias_pct": 0.0878153770464577,
+      "max_abs_bias_pct": 1.2813392679442717,
+      "rmse": 1.8605824991393585,
+      "mean_se": 2.0061730854742588,
+      "coverage": 0.94,
+      "mean_abs_diurnal_gap": 0.07575046202785062
+    },
+    "alternating_24h_hajek": {
+      "randomization": "alternating",
+      "block_hours": 24,
+      "estimator": "hajek",
+      "n_seeds": 50,
+      "n_identified": 50,
+      "mean_bias": -0.09309731392042174,
+      "mean_abs_bias_pct": 0.07492737466721783,
+      "max_abs_bias_pct": 1.2890316704201303,
+      "rmse": 2.0288688836649693,
+      "mean_se": 2.037137046272844,
+      "coverage": 0.94,
+      "mean_abs_diurnal_gap": 0.0
+    }
+  },
+  "claim_supported_design_side": true,
+  "verdict": "Supported for design-side stratification: alternating 4h blocks give RMSE 261 with 0% CI coverage, while stratified-daily randomization + hour/zone adjustment gives RMSE 1.86 with 94% coverage \u2014 at the daily-block anchor (RMSE 2.03). Analysis-side stratification alone is structurally impossible under strict alternation: treatment is collinear with hour-of-day, and the adjusted estimator was unidentified in 50/50 seeds.",
+  "per_seed": [
+    {
+      "seed": 400,
+      "true_ate": 21.824575473770814,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 282.2810401462766,
+        "standard_error": 65.29209036404754,
+        "bias": 260.4564646725058,
+        "bias_pct": 11.934090767791899,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 37.07823604594353,
+        "standard_error": 66.09287827983067,
+        "bias": 15.253660572172713,
+        "bias_pct": 0.6989212958806392,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0059720526883724,
+        "diurnal_mean_control": 0.994570861192389
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 23.259788918687185,
+        "standard_error": 1.9185111597231082,
+        "bias": 1.4352134449163714,
+        "bias_pct": 0.06576134535314274,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0059720526883724,
+        "diurnal_mean_control": 0.994570861192389
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": -1.7082841189399005,
+        "standard_error": 65.84966078432565,
+        "bias": -23.532859592710714,
+        "bias_pct": 1.0782734180095712,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9865624811744189,
+        "diurnal_mean_control": 1.0134375188255813
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 20.90654649160861,
+        "standard_error": 2.035856024949592,
+        "bias": -0.9180289821622054,
+        "bias_pct": 0.042064001806839724,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9865624811744189,
+        "diurnal_mean_control": 1.0134375188255813
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 21.44844034597395,
+        "standard_error": 2.0424295854385344,
+        "bias": -0.3761351277968643,
+        "bias_pct": 0.0172344762558571,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 401,
+      "true_ate": 66.04118194168,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -195.3758187384077,
+        "standard_error": 60.263720042709195,
+        "bias": -261.4170006800877,
+        "bias_pct": 3.9583937324280667,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": -41.87949550920996,
+        "standard_error": 66.50386685808203,
+        "bias": -107.92067745088995,
+        "bias_pct": 1.634142125835863,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9347551577364979,
+        "diurnal_mean_control": 1.0593134929668204
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 62.77165257543359,
+        "standard_error": 2.3609310899498372,
+        "bias": -3.2695293662464024,
+        "bias_pct": 0.049507432637012405,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9347551577364979,
+        "diurnal_mean_control": 1.0593134929668204
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": -119.38038236437,
+        "standard_error": 64.77592654310286,
+        "bias": -185.42156430605002,
+        "bias_pct": 2.8076657451375278,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8908302548623674,
+        "diurnal_mean_control": 1.1091697451376328
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 65.03844964283385,
+        "standard_error": 2.0870421562102632,
+        "bias": -1.0027322988461407,
+        "bias_pct": 0.01518343962607512,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.8908302548623674,
+        "diurnal_mean_control": 1.1091697451376328
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 70.87361575290049,
+        "standard_error": 1.9488829337500948,
+        "bias": 4.832433811220497,
+        "bias_pct": 0.07317303641670055,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 402,
+      "true_ate": 21.42157273790704,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 280.15549648767694,
+        "standard_error": 65.01424737271746,
+        "bias": 258.73392374976993,
+        "bias_pct": 12.078194580546427,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": -70.41004542558164,
+        "standard_error": 65.35760775639697,
+        "bias": -91.83161816348868,
+        "bias_pct": 4.286875631731087,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9493519979364671,
+        "diurnal_mean_control": 1.059856729711448
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 22.57433577908434,
+        "standard_error": 2.008547823524343,
+        "bias": 1.1527630411772982,
+        "bias_pct": 0.05381318427369246,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9493519979364671,
+        "diurnal_mean_control": 1.059856729711448
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 77.87260387504341,
+        "standard_error": 66.09157052295926,
+        "bias": 56.45103113713637,
+        "bias_pct": 2.6352421378119515,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0343909647023306,
+        "diurnal_mean_control": 0.9656090352976695
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 23.675195451645216,
+        "standard_error": 1.9551286789255176,
+        "bias": 2.2536227137381744,
+        "bias_pct": 0.10520341999680649,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0343909647023306,
+        "diurnal_mean_control": 0.9656090352976695
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 20.026888191782632,
+        "standard_error": 1.9437175759154388,
+        "bias": -1.3946845461244095,
+        "bias_pct": 0.06510654297835065,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 403,
+      "true_ate": 62.64292517378382,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 324.54623958353443,
+        "standard_error": 67.14504731940445,
+        "bias": 261.9033144097506,
+        "bias_pct": 4.180892154751381,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 142.3786535857355,
+        "standard_error": 66.5436190831278,
+        "bias": 79.73572841195167,
+        "bias_pct": 1.2728608728080473,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0432214912901725,
+        "diurnal_mean_control": 0.9513074338629705
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 62.33604124806966,
+        "standard_error": 1.728728450487774,
+        "bias": -0.30688392571416045,
+        "bias_pct": 0.004898939902036885,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0432214912901725,
+        "diurnal_mean_control": 0.9513074338629705
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": -110.31066850164746,
+        "standard_error": 65.58486496860435,
+        "bias": -172.95359367543128,
+        "bias_pct": 2.7609437649283444,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.9039611137446874,
+        "diurnal_mean_control": 1.0960388862553128
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 61.51097355404444,
+        "standard_error": 1.828556023950988,
+        "bias": -1.1319516197393824,
+        "bias_pct": 0.018069903610010634,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9039611137446874,
+        "diurnal_mean_control": 1.0960388862553128
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 62.50014121822733,
+        "standard_error": 2.2216935333559507,
+        "bias": -0.1427839555564958,
+        "bias_pct": 0.002279330908644272,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 404,
+      "true_ate": 8.277382109114164,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 275.7287626693169,
+        "standard_error": 65.45814008505516,
+        "bias": 267.4513805602027,
+        "bias_pct": 32.311107187587,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 71.37447627277436,
+        "standard_error": 66.07725652479105,
+        "bias": 63.097094163660195,
+        "bias_pct": 7.622832114296675,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0375697059618938,
+        "diurnal_mean_control": 0.9666516093147236
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 10.003983817360432,
+        "standard_error": 1.9410959085657098,
+        "bias": 1.7266017082462675,
+        "bias_pct": 0.20859272720358277,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0375697059618938,
+        "diurnal_mean_control": 0.9666516093147236
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 11.555712928406024,
+        "standard_error": 65.55620158099083,
+        "bias": 3.2783308192918597,
+        "bias_pct": 0.39605889592581617,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0022441331701613,
+        "diurnal_mean_control": 0.9977558668298387
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 8.024524750655724,
+        "standard_error": 1.7979678744208045,
+        "bias": -0.2528573584584404,
+        "bias_pct": 0.03054798668530972,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0022441331701613,
+        "diurnal_mean_control": 0.9977558668298387
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 7.136871314786504,
+        "standard_error": 1.9623631245201627,
+        "bias": -1.1405107943276604,
+        "bias_pct": 0.13778641354152932,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 405,
+      "true_ate": 49.36208372356491,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -212.91763018568565,
+        "standard_error": 60.14637799208525,
+        "bias": -262.2797139092506,
+        "bias_pct": 5.313384162995558,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 43.39149150392177,
+        "standard_error": 67.08154281533336,
+        "bias": -5.970592219643137,
+        "bias_pct": 0.12095502801460635,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9968605504480165,
+        "diurnal_mean_control": 1.0032150989387787
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 53.351489747334476,
+        "standard_error": 2.0538929595679716,
+        "bias": 3.9894060237695683,
+        "bias_pct": 0.08081923863082527,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9968605504480165,
+        "diurnal_mean_control": 1.0032150989387787
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 69.12117983075109,
+        "standard_error": 67.07927829027388,
+        "bias": 19.75909610718618,
+        "bias_pct": 0.4002889387295741,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.01181355931862,
+        "diurnal_mean_control": 0.9881864406813805
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 49.41634433073338,
+        "standard_error": 2.1238633491202967,
+        "bias": 0.05426060716847303,
+        "bias_pct": 0.001099236561250951,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.01181355931862,
+        "diurnal_mean_control": 0.9881864406813805
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 48.676031717167575,
+        "standard_error": 1.9632575696696235,
+        "bias": -0.6860520063973325,
+        "bias_pct": 0.013898359928226025,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 406,
+      "true_ate": 65.87432490679134,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 321.01886536968993,
+        "standard_error": 66.70604704258518,
+        "bias": 255.1445404628986,
+        "bias_pct": 3.873201597495147,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 125.97570498498794,
+        "standard_error": 66.02392226372784,
+        "bias": 60.1013800781966,
+        "bias_pct": 0.9123642657930361,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0316078787163667,
+        "diurnal_mean_control": 0.9726065051124825
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 67.44923394283622,
+        "standard_error": 2.022426909798491,
+        "bias": 1.5749090360448719,
+        "bias_pct": 0.023907782558277208,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0316078787163667,
+        "diurnal_mean_control": 0.9726065051124825
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": -20.75736115697157,
+        "standard_error": 66.15194912641037,
+        "bias": -86.63168606376291,
+        "bias_pct": 1.3151054858830376,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9459637582938231,
+        "diurnal_mean_control": 1.054036241706177
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 67.8364732510378,
+        "standard_error": 2.0237164884538115,
+        "bias": 1.962148344246458,
+        "bias_pct": 0.02978623837166898,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9459637582938231,
+        "diurnal_mean_control": 1.054036241706177
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 66.1535295482795,
+        "standard_error": 2.139312110281069,
+        "bias": 0.2792046414881497,
+        "bias_pct": 0.0042384440657753895,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 407,
+      "true_ate": 28.463543933209536,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 288.74007018336397,
+        "standard_error": 65.50449472587263,
+        "bias": 260.27652625015446,
+        "bias_pct": 9.144206598479103,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 60.37692559965569,
+        "standard_error": 66.67546091525574,
+        "bias": 31.913381666446156,
+        "bias_pct": 1.1212019747552082,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0227125289275227,
+        "diurnal_mean_control": 0.978343867766781
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 27.703005635290552,
+        "standard_error": 2.0973837056140985,
+        "bias": -0.7605382979189841,
+        "bias_pct": 0.0267197331331477,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0227125289275227,
+        "diurnal_mean_control": 0.978343867766781
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": -123.15690171366805,
+        "standard_error": 64.82129471659526,
+        "bias": -151.62044564687758,
+        "bias_pct": 5.32682950523164,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.9103313243262647,
+        "diurnal_mean_control": 1.0896686756737357
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 31.437135631239055,
+        "standard_error": 2.0902571548014404,
+        "bias": 2.9735916980295194,
+        "bias_pct": 0.10447018491468003,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9103313243262647,
+        "diurnal_mean_control": 1.0896686756737357
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 28.91450764431727,
+        "standard_error": 2.13949945993311,
+        "bias": 0.4509637111077325,
+        "bias_pct": 0.015843554554061532,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 408,
+      "true_ate": 24.058530058559754,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 283.89537093567117,
+        "standard_error": 65.70789490075369,
+        "bias": 259.8368408771114,
+        "bias_pct": 10.800196032120606,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": -63.82597827302186,
+        "standard_error": 65.6260771647901,
+        "bias": -87.88450833158161,
+        "bias_pct": 3.652945883130266,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9417576368399373,
+        "diurnal_mean_control": 1.0492819995969762
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 23.53296344256966,
+        "standard_error": 2.1181857548611056,
+        "bias": -0.525566615990094,
+        "bias_pct": 0.02184533363887306,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9417576368399373,
+        "diurnal_mean_control": 1.0492819995969762
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 86.36067331697768,
+        "standard_error": 66.33006161887728,
+        "bias": 62.30214325841793,
+        "bias_pct": 2.5896072248292463,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0362910920085244,
+        "diurnal_mean_control": 0.9637089079914757
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 25.495145410500946,
+        "standard_error": 2.174424626282989,
+        "bias": 1.4366153519411924,
+        "bias_pct": 0.05971334692703143,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0362910920085244,
+        "diurnal_mean_control": 0.9637089079914757
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 22.36257663878598,
+        "standard_error": 2.205323782090921,
+        "bias": -1.6959534197737725,
+        "bias_pct": 0.07049281130832727,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 409,
+      "true_ate": 11.269916656590478,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 273.02445194132054,
+        "standard_error": 64.61172625489122,
+        "bias": 261.7545352847301,
+        "bias_pct": 23.22595128790593,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 44.88462051716772,
+        "standard_error": 67.42927752729025,
+        "bias": 33.61470386057724,
+        "bias_pct": 2.982693207488794,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.024642009182726,
+        "diurnal_mean_control": 0.9832434337557464
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 10.516198865631301,
+        "standard_error": 2.204589943662789,
+        "bias": -0.7537177909591772,
+        "bias_pct": 0.06687873689983452,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.024642009182726,
+        "diurnal_mean_control": 0.9832434337557464
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 5.393133533834089,
+        "standard_error": 64.83579130239633,
+        "bias": -5.87678312275639,
+        "bias_pct": 0.5214575494948079,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9960835303713341,
+        "diurnal_mean_control": 1.003916469628666
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 8.788488156061163,
+        "standard_error": 2.043286161558881,
+        "bias": -2.481428500529315,
+        "bias_pct": 0.22018161945130382,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9960835303713341,
+        "diurnal_mean_control": 1.003916469628666
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 9.139191604247571,
+        "standard_error": 1.774589765775835,
+        "bias": -2.130725052342907,
+        "bias_pct": 0.1890630709408921,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 410,
+      "true_ate": 63.388039433259976,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 326.75992834072656,
+        "standard_error": 67.22252088692574,
+        "bias": 263.3718889074666,
+        "bias_pct": 4.154914574771881,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": -20.40126207050946,
+        "standard_error": 66.61095988012318,
+        "bias": -83.78930150376944,
+        "bias_pct": 1.3218471852562903,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9581741532915029,
+        "diurnal_mean_control": 1.0531301296026858
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 64.18061113542558,
+        "standard_error": 2.1455402532844667,
+        "bias": 0.7925717021656027,
+        "bias_pct": 0.012503489763239733,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9581741532915029,
+        "diurnal_mean_control": 1.0531301296026858
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 194.36458480931185,
+        "standard_error": 66.70681598088571,
+        "bias": 130.9765453760519,
+        "bias_pct": 2.066265916205762,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.0744934819452727,
+        "diurnal_mean_control": 0.9255065180547275
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 63.98803091421365,
+        "standard_error": 2.0459731498587215,
+        "bias": 0.5999914809536762,
+        "bias_pct": 0.00946537369380852,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0744934819452727,
+        "diurnal_mean_control": 0.9255065180547275
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 64.60674165406272,
+        "standard_error": 1.811315763644856,
+        "bias": 1.21870222080274,
+        "bias_pct": 0.019226059548440328,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 411,
+      "true_ate": 82.89683080680769,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -175.36476197705235,
+        "standard_error": 60.2920775306643,
+        "bias": -258.26159278386,
+        "bias_pct": 3.1154579767439188,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 62.040030246395645,
+        "standard_error": 67.8603785478826,
+        "bias": -20.85680056041204,
+        "bias_pct": 0.2515994924947026,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9884704393879472,
+        "diurnal_mean_control": 1.0109933019789343
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 83.66027128072139,
+        "standard_error": 2.116754555681989,
+        "bias": 0.763440473913704,
+        "bias_pct": 0.009209525460544004,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9884704393879472,
+        "diurnal_mean_control": 1.0109933019789343
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 7.223919086423166,
+        "standard_error": 68.03748493513008,
+        "bias": -75.67291172038452,
+        "bias_pct": 0.9128565107240515,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9639740948384526,
+        "diurnal_mean_control": 1.0360259051615477
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 81.60978418271004,
+        "standard_error": 2.1272622162399153,
+        "bias": -1.2870466240976413,
+        "bias_pct": 0.01552588454312714,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9639740948384526,
+        "diurnal_mean_control": 1.0360259051615477
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 83.62092530254438,
+        "standard_error": 2.1109359684255558,
+        "bias": 0.7240944957366935,
+        "bias_pct": 0.008734887554678739,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 412,
+      "true_ate": 28.265052263784906,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -235.49765864031883,
+        "standard_error": 60.22099168074209,
+        "bias": -263.76271090410376,
+        "bias_pct": 9.331760947849169,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 56.21589880852821,
+        "standard_error": 65.66020813061387,
+        "bias": 27.950846544743303,
+        "bias_pct": 0.9888835967430994,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.015169861189476,
+        "diurnal_mean_control": 0.9862092171004765
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 26.974898017611583,
+        "standard_error": 2.0626625671880308,
+        "bias": -1.2901542461733229,
+        "bias_pct": 0.045644856203798906,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.015169861189476,
+        "diurnal_mean_control": 0.9862092171004765
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": -38.886418823687904,
+        "standard_error": 65.59961355384131,
+        "bias": -67.15147108747281,
+        "bias_pct": 2.3757773543377385,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9610454761407691,
+        "diurnal_mean_control": 1.0389545238592308
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 26.53255998251079,
+        "standard_error": 2.232557890272888,
+        "bias": -1.7324922812741157,
+        "bias_pct": 0.06129450124859319,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9610454761407691,
+        "diurnal_mean_control": 1.0389545238592308
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 29.80557782934693,
+        "standard_error": 1.9427215129130135,
+        "bias": 1.5405255655620245,
+        "bias_pct": 0.05450283803422681,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 413,
+      "true_ate": 1.7972226412793781,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -254.12152743292643,
+        "standard_error": 59.937744787951445,
+        "bias": -255.9187500742058,
+        "bias_pct": 142.39679836885787,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": -47.85733867490751,
+        "standard_error": 65.48394004352473,
+        "bias": -49.654561316186886,
+        "bias_pct": 27.628497535975615,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.97547541308956,
+        "diurnal_mean_control": 1.0263412229778803
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": -0.029254718955660786,
+        "standard_error": 1.957915016291733,
+        "bias": -1.8264773602350388,
+        "bias_pct": 1.01627773781819,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.97547541308956,
+        "diurnal_mean_control": 1.0263412229778803
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": -104.77519335801901,
+        "standard_error": 64.72163288766924,
+        "bias": -106.57241599929839,
+        "bias_pct": 59.29839383919252,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9361066624302141,
+        "diurnal_mean_control": 1.0638933375697863
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": -0.2680292790918166,
+        "standard_error": 2.135998004185119,
+        "bias": -2.0652519203711948,
+        "bias_pct": 1.1491352673484105,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9361066624302141,
+        "diurnal_mean_control": 1.0638933375697863
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 4.113899544684614,
+        "standard_error": 2.36384853354821,
+        "bias": 2.3166769034052357,
+        "bias_pct": 1.2890316704201303,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 414,
+      "true_ate": 61.19696233771812,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 323.4531916779267,
+        "standard_error": 67.20890662602335,
+        "bias": 262.2562293402086,
+        "bias_pct": 4.285445213651882,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 106.19362681309201,
+        "standard_error": 66.80583051602625,
+        "bias": 44.99666447537389,
+        "bias_pct": 0.7352761110438427,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0251015512843957,
+        "diurnal_mean_control": 0.9681142456657681
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 62.37004961416757,
+        "standard_error": 2.091964753918137,
+        "bias": 1.1730872764494507,
+        "bias_pct": 0.01916904420803956,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0251015512843957,
+        "diurnal_mean_control": 0.9681142456657681
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": -57.44380590293997,
+        "standard_error": 66.11953585201296,
+        "bias": -118.64076824065809,
+        "bias_pct": 1.9386708703927789,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.93030707706677,
+        "diurnal_mean_control": 1.0696929229332302
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 61.34190168783428,
+        "standard_error": 2.090701736942784,
+        "bias": 0.14493935011616088,
+        "bias_pct": 0.002368407590499455,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.93030707706677,
+        "diurnal_mean_control": 1.0696929229332302
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 59.41529924938732,
+        "standard_error": 2.1590071804063276,
+        "bias": -1.7816630883308022,
+        "bias_pct": 0.029113587019215372,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 415,
+      "true_ate": 94.12856214029998,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -169.8612764343768,
+        "standard_error": 60.682672512252644,
+        "bias": -263.9898385746768,
+        "bias_pct": 2.8045667815598434,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 245.04492706831775,
+        "standard_error": 67.39526845875021,
+        "bias": 150.91636492801777,
+        "bias_pct": 1.603300438214224,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.0895520990953238,
+        "diurnal_mean_control": 0.9166239077388366
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 95.02339388483864,
+        "standard_error": 1.8720319432400119,
+        "bias": 0.8948317445386635,
+        "bias_pct": 0.009506484792627598,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0895520990953238,
+        "diurnal_mean_control": 0.9166239077388366
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 113.77669433748076,
+        "standard_error": 67.7470308372814,
+        "bias": 19.648132197180786,
+        "bias_pct": 0.20873719677025304,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0131284375786174,
+        "diurnal_mean_control": 0.9868715624213826
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 94.93226894954417,
+        "standard_error": 1.8795588824920415,
+        "bias": 0.8037068092441899,
+        "bias_pct": 0.008538394627193533,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0131284375786174,
+        "diurnal_mean_control": 0.9868715624213826
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 92.8206718057935,
+        "standard_error": 2.4389343368771597,
+        "bias": -1.3078903345064816,
+        "bias_pct": 0.01389472339497816,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 416,
+      "true_ate": 21.991219609517582,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 285.4939114881255,
+        "standard_error": 65.73494465282918,
+        "bias": 263.5026918786079,
+        "bias_pct": 11.98217727608734,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 9.291477357715507,
+        "standard_error": 68.49639155558285,
+        "bias": -12.699742251802075,
+        "bias_pct": 0.5774914933006149,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.995338829913401,
+        "diurnal_mean_control": 1.0034958775649494
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 22.265328064676943,
+        "standard_error": 2.248055014963755,
+        "bias": 0.2741084551593609,
+        "bias_pct": 0.012464449904394092,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.995338829913401,
+        "diurnal_mean_control": 1.0034958775649494
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": -11.894405003707448,
+        "standard_error": 66.25984857865174,
+        "bias": -33.88562461322503,
+        "bias_pct": 1.5408706390508542,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9823777747057204,
+        "diurnal_mean_control": 1.0176222252942797
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 22.0910062000349,
+        "standard_error": 2.0238927487165457,
+        "bias": 0.09978659051731853,
+        "bias_pct": 0.004537565095940922,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9823777747057204,
+        "diurnal_mean_control": 1.0176222252942797
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 23.59384946459909,
+        "standard_error": 1.8254122606306078,
+        "bias": 1.6026298550815063,
+        "bias_pct": 0.07287589699608583,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 417,
+      "true_ate": 63.527241978222186,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 321.84790366410914,
+        "standard_error": 66.90481912178555,
+        "bias": 258.32066168588693,
+        "bias_pct": 4.066297444086145,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 76.51474897649837,
+        "standard_error": 67.2873799847488,
+        "bias": 12.987506998276181,
+        "bias_pct": 0.204439962980424,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0056834817002849,
+        "diurnal_mean_control": 0.9943165182997152
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 67.22925293531064,
+        "standard_error": 1.912510349315155,
+        "bias": 3.7020109570884543,
+        "bias_pct": 0.058274385000966086,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0056834817002849,
+        "diurnal_mean_control": 0.9943165182997152
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 117.56669102172452,
+        "standard_error": 67.08134443849542,
+        "bias": 54.03944904350234,
+        "bias_pct": 0.85065001030625,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0285223697806278,
+        "diurnal_mean_control": 0.9714776302193723
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 65.60854358172806,
+        "standard_error": 1.7991314671320773,
+        "bias": 2.081301603505871,
+        "bias_pct": 0.03276234791082797,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0285223697806278,
+        "diurnal_mean_control": 0.9714776302193723
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 62.38503936916959,
+        "standard_error": 1.7611878059253838,
+        "bias": -1.142202609052596,
+        "bias_pct": 0.017979729223002554,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 418,
+      "true_ate": 68.85622760221989,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 330.1503328701149,
+        "standard_error": 67.33513873126584,
+        "bias": 261.294105267895,
+        "bias_pct": 3.7947781103748857,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 88.34096742888221,
+        "standard_error": 67.07277002750077,
+        "bias": 19.48473982666232,
+        "bias_pct": 0.28297716132845685,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0126762872487647,
+        "diurnal_mean_control": 0.9873237127512356
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 69.8816246503596,
+        "standard_error": 1.8087608914065154,
+        "bias": 1.025397048139709,
+        "bias_pct": 0.014891856319277223,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0126762872487647,
+        "diurnal_mean_control": 0.9873237127512356
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": -45.67594604998942,
+        "standard_error": 65.1749741444544,
+        "bias": -114.53217365220931,
+        "bias_pct": 1.6633524321700839,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9274720290854906,
+        "diurnal_mean_control": 1.0725279709145095
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 68.4153644708988,
+        "standard_error": 1.9571588733160736,
+        "bias": -0.44086313132109467,
+        "bias_pct": 0.0064026617006662945,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9274720290854906,
+        "diurnal_mean_control": 1.0725279709145095
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 67.83301209334843,
+        "standard_error": 1.4229831614969368,
+        "bias": -1.0232155088714592,
+        "bias_pct": 0.014860173792594923,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 419,
+      "true_ate": 46.60855173094802,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -216.4941090526462,
+        "standard_error": 60.08344273645783,
+        "bias": -263.1026607835942,
+        "bias_pct": 5.644943921501306,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": -63.50552359759149,
+        "standard_error": 67.37564151513949,
+        "bias": -110.11407532853951,
+        "bias_pct": 2.362529433743892,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9278223096812054,
+        "diurnal_mean_control": 1.052831092913757
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 45.23101344667991,
+        "standard_error": 1.9994579279115108,
+        "bias": -1.3775382842681125,
+        "bias_pct": 0.029555483556324036,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9278223096812054,
+        "diurnal_mean_control": 1.052831092913757
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 112.00214018965369,
+        "standard_error": 66.1945027274309,
+        "bias": 65.39358845870566,
+        "bias_pct": 1.4030384131263276,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0355151588108757,
+        "diurnal_mean_control": 0.9644848411891244
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 47.270259159781574,
+        "standard_error": 1.8080245835959783,
+        "bias": 0.6617074288335516,
+        "bias_pct": 0.014197124867842196,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0355151588108757,
+        "diurnal_mean_control": 0.9644848411891244
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 46.01129414396655,
+        "standard_error": 1.6838177399060976,
+        "bias": -0.5972575869814705,
+        "bias_pct": 0.012814334811971686,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 420,
+      "true_ate": 62.55474614788106,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -198.77424724737728,
+        "standard_error": 60.3349852910254,
+        "bias": -261.32899339525835,
+        "bias_pct": 4.177604570202711,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 145.05971156469172,
+        "standard_error": 67.11918882485308,
+        "bias": 82.50496541681066,
+        "bias_pct": 1.3189241504036602,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.048526951164238,
+        "diurnal_mean_control": 0.9503037247113229
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 64.787495071745,
+        "standard_error": 1.7846925648423677,
+        "bias": 2.2327489238639373,
+        "bias_pct": 0.03569271816059585,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.048526951164238,
+        "diurnal_mean_control": 0.9503037247113229
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 7.938542147920771,
+        "standard_error": 66.71190656100808,
+        "bias": -54.61620399996029,
+        "bias_pct": 0.8730944870409377,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9714843561246989,
+        "diurnal_mean_control": 1.0285156438753014
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 59.96164710855375,
+        "standard_error": 1.951922828066939,
+        "bias": -2.5930990393273134,
+        "bias_pct": 0.04145327411603844,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9714843561246989,
+        "diurnal_mean_control": 1.0285156438753014
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 58.38490213275497,
+        "standard_error": 2.427619697184974,
+        "bias": -4.169844015126088,
+        "bias_pct": 0.06665911496576883,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 421,
+      "true_ate": 20.252954682898686,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -239.89971807075733,
+        "standard_error": 59.998998939862645,
+        "bias": -260.152672753656,
+        "bias_pct": 12.8451713257091,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": -12.767942384209732,
+        "standard_error": 65.87609150009057,
+        "bias": -33.02089706710842,
+        "bias_pct": 1.6304236880059189,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.98218985221199,
+        "diurnal_mean_control": 1.0165818617336646
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 16.243694940474086,
+        "standard_error": 1.9486710481553888,
+        "bias": -4.0092597424246,
+        "bias_pct": 0.197959251141265,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.98218985221199,
+        "diurnal_mean_control": 1.0165818617336646
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 27.9313199687939,
+        "standard_error": 65.32408222610505,
+        "bias": 7.6783652858952145,
+        "bias_pct": 0.3791232146674737,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0020760933185828,
+        "diurnal_mean_control": 0.9979239066814172
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 19.554247350086623,
+        "standard_error": 2.196674412885113,
+        "bias": -0.698707332812063,
+        "bias_pct": 0.034499032054915016,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0020760933185828,
+        "diurnal_mean_control": 0.9979239066814172
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 20.67027450366936,
+        "standard_error": 2.432691096210804,
+        "bias": 0.4173198207706754,
+        "bias_pct": 0.02060537967445582,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 422,
+      "true_ate": 24.427303522854054,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -239.65883244008694,
+        "standard_error": 59.9656030133758,
+        "bias": -264.086135962941,
+        "bias_pct": 10.81110470158376,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": -74.38106914785908,
+        "standard_error": 65.30208941742849,
+        "bias": -98.80837267071314,
+        "bias_pct": 4.044997131110626,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9434655340685892,
+        "diurnal_mean_control": 1.062187912524552
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 25.528741974150343,
+        "standard_error": 2.0312550555025375,
+        "bias": 1.1014384512962891,
+        "bias_pct": 0.045090464048387055,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9434655340685892,
+        "diurnal_mean_control": 1.062187912524552
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 1.1999882500940657,
+        "standard_error": 65.80100646797172,
+        "bias": -23.227315272759988,
+        "bias_pct": 0.9508751242652975,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9838471296535247,
+        "diurnal_mean_control": 1.0161528703464753
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 25.365776483213775,
+        "standard_error": 1.9675404294674759,
+        "bias": 0.9384729603597215,
+        "bias_pct": 0.03841901581489301,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9838471296535247,
+        "diurnal_mean_control": 1.0161528703464753
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 22.918341515762563,
+        "standard_error": 1.593777553876609,
+        "bias": -1.5089620070914904,
+        "bias_pct": 0.06177358076709997,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 423,
+      "true_ate": 66.76139200884042,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -193.20088762061835,
+        "standard_error": 60.161015858509174,
+        "bias": -259.96227962945875,
+        "bias_pct": 3.8939014272655523,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 79.43357387788956,
+        "standard_error": 67.16281549022092,
+        "bias": 12.67218186904914,
+        "bias_pct": 0.18981302647750536,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0027607094290802,
+        "diurnal_mean_control": 0.9965767203079408
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 67.9025024153383,
+        "standard_error": 1.9777261564294262,
+        "bias": 1.1411104064978872,
+        "bias_pct": 0.01709236988867433,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0027607094290802,
+        "diurnal_mean_control": 0.9965767203079408
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 83.55574210792452,
+        "standard_error": 67.26973691044033,
+        "bias": 16.7943500990841,
+        "bias_pct": 0.2515578179804912,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0091556653614844,
+        "diurnal_mean_control": 0.9908443346385156
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 64.6754581667557,
+        "standard_error": 1.826642545186309,
+        "bias": -2.0859338420847138,
+        "bias_pct": 0.031244612781718188,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0091556653614844,
+        "diurnal_mean_control": 0.9908443346385156
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 62.30867730100249,
+        "standard_error": 2.3370911327422843,
+        "bias": -4.452714707837927,
+        "bias_pct": 0.06669595366208522,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 424,
+      "true_ate": 41.02031557583948,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 305.54885163674714,
+        "standard_error": 66.36643474125832,
+        "bias": 264.52853606090764,
+        "bias_pct": 6.448720160912464,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": -35.54224470153599,
+        "standard_error": 66.04576839875352,
+        "bias": -76.56256027737547,
+        "bias_pct": 1.8664546872104022,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9495702158151282,
+        "diurnal_mean_control": 1.0458452583498834
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 42.109392911639766,
+        "standard_error": 2.152510241084708,
+        "bias": 1.0890773358002832,
+        "bias_pct": 0.026549706420146067,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9495702158151282,
+        "diurnal_mean_control": 1.0458452583498834
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 68.40606085652678,
+        "standard_error": 67.03524636498987,
+        "bias": 27.385745280687296,
+        "bias_pct": 0.6676142027736423,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0172275826067672,
+        "diurnal_mean_control": 0.9827724173932333
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 40.67064615451083,
+        "standard_error": 1.846261390549463,
+        "bias": -0.34966942132865597,
+        "bias_pct": 0.008524298665674026,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0172275826067672,
+        "diurnal_mean_control": 0.9827724173932333
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 40.810835428465225,
+        "standard_error": 2.0980807493595237,
+        "bias": -0.2094801473742578,
+        "bias_pct": 0.005106741487323888,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 425,
+      "true_ate": 26.556239665659767,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -235.56657439538026,
+        "standard_error": 59.98279289540274,
+        "bias": -262.12281406104,
+        "bias_pct": 9.870479305848205,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 22.08693525192041,
+        "standard_error": 67.1763279608322,
+        "bias": -4.4693044137393585,
+        "bias_pct": 0.1682958306600417,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9988019540663955,
+        "diurnal_mean_control": 1.0010137311745886
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 25.425043294319895,
+        "standard_error": 1.9110204595875053,
+        "bias": -1.1311963713398718,
+        "bias_pct": 0.042596255553554035,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9988019540663955,
+        "diurnal_mean_control": 1.0010137311745886
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 79.4276589135211,
+        "standard_error": 66.56438878175284,
+        "bias": 52.87141924786133,
+        "bias_pct": 1.9909226574811374,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0325189412729268,
+        "diurnal_mean_control": 0.9674810587270735
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 28.718441708940567,
+        "standard_error": 1.7673883636360974,
+        "bias": 2.1622020432808,
+        "bias_pct": 0.08141973677383145,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0325189412729268,
+        "diurnal_mean_control": 0.9674810587270735
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 26.053520916029925,
+        "standard_error": 2.049789691350685,
+        "bias": -0.5027187496298424,
+        "bias_pct": 0.018930343902563693,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 426,
+      "true_ate": 31.91476305607501,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 296.28264047307493,
+        "standard_error": 66.1615103465029,
+        "bias": 264.36787741699993,
+        "bias_pct": 8.28356071303112,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 141.7555526060172,
+        "standard_error": 67.31469814231478,
+        "bias": 109.8407895499422,
+        "bias_pct": 3.4416921522164925,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0719664807264713,
+        "diurnal_mean_control": 0.9433455364493738
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 34.94091266322319,
+        "standard_error": 1.8524668099487804,
+        "bias": 3.0261496071481773,
+        "bias_pct": 0.09481974225630813,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0719664807264713,
+        "diurnal_mean_control": 0.9433455364493738
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 46.87626917757336,
+        "standard_error": 66.50668947711567,
+        "bias": 14.961506121498353,
+        "bias_pct": 0.4687957762747799,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0091759048758877,
+        "diurnal_mean_control": 0.9908240951241124
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 31.408371845554584,
+        "standard_error": 2.0019012037861894,
+        "bias": -0.5063912105204267,
+        "bias_pct": 0.015866989506727186,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0091759048758877,
+        "diurnal_mean_control": 0.9908240951241124
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 30.308236654142092,
+        "standard_error": 1.88514246275206,
+        "bias": -1.6065264019329177,
+        "bias_pct": 0.050338033188910475,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 427,
+      "true_ate": 63.54787574390804,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 327.1406588134912,
+        "standard_error": 67.13330266844729,
+        "bias": 263.59278306958316,
+        "bias_pct": 4.1479401157614975,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": -22.512069755769858,
+        "standard_error": 67.48894207316552,
+        "bias": -86.0599454996779,
+        "bias_pct": 1.3542536944349073,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.948603560254274,
+        "diurnal_mean_control": 1.0456215588754199
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 65.01514136124968,
+        "standard_error": 1.9524384057056579,
+        "bias": 1.4672656173416385,
+        "bias_pct": 0.023089137129533345,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.948603560254274,
+        "diurnal_mean_control": 1.0456215588754199
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 182.17972914439906,
+        "standard_error": 66.22017734624215,
+        "bias": 118.63185340049102,
+        "bias_pct": 1.8668106842558552,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0699635810769652,
+        "diurnal_mean_control": 0.9300364189230349
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 61.54073924477265,
+        "standard_error": 1.7344633293333211,
+        "bias": -2.0071364991353846,
+        "bias_pct": 0.031584635609598594,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0699635810769652,
+        "diurnal_mean_control": 0.9300364189230349
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 65.12580083745843,
+        "standard_error": 1.99212834635963,
+        "bias": 1.577925093550391,
+        "bias_pct": 0.02483049315305646,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 428,
+      "true_ate": 49.49149166691713,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -212.33185347460608,
+        "standard_error": 60.11464815075195,
+        "bias": -261.8233451415232,
+        "bias_pct": 5.290269828673209,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 82.85614702274222,
+        "standard_error": 67.62593848289973,
+        "bias": 33.36465535582509,
+        "bias_pct": 0.6741493180357684,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0207533969890077,
+        "diurnal_mean_control": 0.980211877289551
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 51.41421600513789,
+        "standard_error": 2.0567266768305243,
+        "bias": 1.9227243382207604,
+        "bias_pct": 0.038849593606127185,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0207533969890077,
+        "diurnal_mean_control": 0.980211877289551
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": -51.038047678869134,
+        "standard_error": 66.22593959867011,
+        "bias": -100.52953934578626,
+        "bias_pct": 2.031248927034984,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9410403697132947,
+        "diurnal_mean_control": 1.0589596302867055
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 50.914013850738776,
+        "standard_error": 2.2834280261535644,
+        "bias": 1.4225221838216484,
+        "bias_pct": 0.028742762359950075,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9410403697132947,
+        "diurnal_mean_control": 1.0589596302867055
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 47.31731461226536,
+        "standard_error": 2.048057134841468,
+        "bias": -2.1741770546517643,
+        "bias_pct": 0.043930319766561116,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 429,
+      "true_ate": 32.25990405515449,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 289.2365810054638,
+        "standard_error": 65.36670556303054,
+        "bias": 256.9766769503093,
+        "bias_pct": 7.965822728764425,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 64.42778016912462,
+        "standard_error": 66.13345697863112,
+        "bias": 32.167876113970124,
+        "bias_pct": 0.9971472965007264,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.019837116130591,
+        "diurnal_mean_control": 0.9801628838694091
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 36.65177440121072,
+        "standard_error": 1.9774744455792916,
+        "bias": 4.39187034605623,
+        "bias_pct": 0.13614021723522443,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.019837116130591,
+        "diurnal_mean_control": 0.9801628838694091
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 100.66701391026538,
+        "standard_error": 65.594349715263,
+        "bias": 68.40710985511089,
+        "bias_pct": 2.120499482520339,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0373768800559588,
+        "diurnal_mean_control": 0.9626231199440415
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 30.160894906782442,
+        "standard_error": 2.2401736320804915,
+        "bias": -2.099009148372051,
+        "bias_pct": 0.06506557318903963,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0373768800559588,
+        "diurnal_mean_control": 0.9626231199440415
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 30.549175442935166,
+        "standard_error": 2.1705847234715074,
+        "bias": -1.7107286122193273,
+        "bias_pct": 0.05302956293033323,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 430,
+      "true_ate": 43.944734070098136,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 300.97109417337003,
+        "standard_error": 65.91120576507865,
+        "bias": 257.0263601032719,
+        "bias_pct": 5.848854602084475,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": -46.781246052674305,
+        "standard_error": 67.62077535249853,
+        "bias": -90.72598012277244,
+        "bias_pct": 2.0645472556063607,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9415054309949927,
+        "diurnal_mean_control": 1.04281561236449
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 42.15832012055997,
+        "standard_error": 2.379649414080651,
+        "bias": -1.786413949538165,
+        "bias_pct": 0.04065137694743082,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9415054309949927,
+        "diurnal_mean_control": 1.04281561236449
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 45.072017077222995,
+        "standard_error": 66.12051570814556,
+        "bias": 1.1272830071248592,
+        "bias_pct": 0.025652288743554155,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9979611082125411,
+        "diurnal_mean_control": 1.002038891787459
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 44.896338581746754,
+        "standard_error": 2.016266582836156,
+        "bias": 0.9516045116486183,
+        "bias_pct": 0.021654574359937482,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9979611082125411,
+        "diurnal_mean_control": 1.002038891787459
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 45.28396836577451,
+        "standard_error": 2.41073789958315,
+        "bias": 1.339234295676377,
+        "bias_pct": 0.030475421549715304,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 431,
+      "true_ate": 25.51639981911236,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 286.71340362362946,
+        "standard_error": 65.44515761747802,
+        "bias": 261.1970038045171,
+        "bias_pct": 10.236436396049674,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": -31.78148720270326,
+        "standard_error": 65.65091499783117,
+        "bias": -57.297887021815626,
+        "bias_pct": 2.245531792416037,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9722257184043135,
+        "diurnal_mean_control": 1.0361446130354826
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 27.0779827863645,
+        "standard_error": 2.017622757317437,
+        "bias": 1.5615829672521393,
+        "bias_pct": 0.06119918869128545,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9722257184043135,
+        "diurnal_mean_control": 1.0361446130354826
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 80.78036653263848,
+        "standard_error": 65.73639566576014,
+        "bias": 55.263966713526116,
+        "bias_pct": 2.1658214758075767,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.031992226973012,
+        "diurnal_mean_control": 0.968007773026988
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 23.720711004777232,
+        "standard_error": 2.0704959747694236,
+        "bias": -1.7956888143351293,
+        "bias_pct": 0.07037390960577901,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.031992226973012,
+        "diurnal_mean_control": 0.968007773026988
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 25.089303211165088,
+        "standard_error": 1.9908432305639534,
+        "bias": -0.42709660794727355,
+        "bias_pct": 0.016738121795198103,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 432,
+      "true_ate": 28.070289154835404,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -229.16240867839485,
+        "standard_error": 59.95780844508762,
+        "bias": -257.23269783323025,
+        "bias_pct": 9.163877736147908,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 25.978758492134375,
+        "standard_error": 66.16416709934882,
+        "bias": -2.091530662701029,
+        "bias_pct": 0.07451047800627093,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9983504512999807,
+        "diurnal_mean_control": 1.0018583523329334
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 27.7130005397531,
+        "standard_error": 1.8921366597693599,
+        "bias": -0.3572886150823038,
+        "bias_pct": 0.012728355347944717,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9983504512999807,
+        "diurnal_mean_control": 1.0018583523329334
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 70.41193683964116,
+        "standard_error": 66.54352388235684,
+        "bias": 42.34164768480575,
+        "bias_pct": 1.50841508796898,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.025359283884624,
+        "diurnal_mean_control": 0.9746407161153763
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 29.88871071895864,
+        "standard_error": 1.7828087495344633,
+        "bias": 1.8184215641232377,
+        "bias_pct": 0.06478100578490106,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.025359283884624,
+        "diurnal_mean_control": 0.9746407161153763
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 29.22074969010589,
+        "standard_error": 1.864321019509526,
+        "bias": 1.1504605352704864,
+        "bias_pct": 0.04098499053303509,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 433,
+      "true_ate": 28.02450228497896,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 292.5754745129683,
+        "standard_error": 65.89660316871354,
+        "bias": 264.55097222798935,
+        "bias_pct": 9.439988248062045,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": -10.886716043988258,
+        "standard_error": 66.37037913093631,
+        "bias": -38.91121832896722,
+        "bias_pct": 1.3884713431582871,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9744984952880591,
+        "diurnal_mean_control": 1.0243153882137113
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 30.82761271210252,
+        "standard_error": 2.1370591757416952,
+        "bias": 2.80311042712356,
+        "bias_pct": 0.10002355790725381,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9744984952880591,
+        "diurnal_mean_control": 1.0243153882137113
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 96.1668632936013,
+        "standard_error": 66.25711848868359,
+        "bias": 68.14236100862233,
+        "bias_pct": 2.431527964910421,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0434202407345667,
+        "diurnal_mean_control": 0.9565797592654333
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 27.042147979471586,
+        "standard_error": 2.1558394621124695,
+        "bias": -0.9823543055073749,
+        "bias_pct": 0.0350534077471882,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0434202407345667,
+        "diurnal_mean_control": 0.9565797592654333
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 25.353163969542607,
+        "standard_error": 1.7151160536753312,
+        "bias": -2.671338315436355,
+        "bias_pct": 0.09532152572315916,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 434,
+      "true_ate": -7.928269449363399,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -268.41092098224306,
+        "standard_error": 59.667786736006185,
+        "bias": -260.48265153287963,
+        "bias_pct": 32.854919121573886,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 44.20203671449758,
+        "standard_error": 65.41012196342072,
+        "bias": 52.13030616386098,
+        "bias_pct": 6.57524400461021,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0324783617525017,
+        "diurnal_mean_control": 0.9690322597243587
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": -8.25256015061985,
+        "standard_error": 2.119147296620612,
+        "bias": -0.32429070125645065,
+        "bias_pct": 0.04090308778323491,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0324783617525017,
+        "diurnal_mean_control": 0.9690322597243587
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 1.6442431751848972,
+        "standard_error": 65.24188716787779,
+        "bias": 9.572512624548295,
+        "bias_pct": 1.2073899210523074,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0052222006796345,
+        "diurnal_mean_control": 0.9947777993203654
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": -8.278248802478338,
+        "standard_error": 2.084965928297967,
+        "bias": -0.34997935311493844,
+        "bias_pct": 0.04414322133603066,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0052222006796345,
+        "diurnal_mean_control": 0.9947777993203654
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": -5.984167875076196,
+        "standard_error": 2.8362254689225828,
+        "bias": 1.9441015742872034,
+        "bias_pct": 0.24521133983952895,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 435,
+      "true_ate": 49.42550669701352,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -211.7471633844217,
+        "standard_error": 60.46341969462725,
+        "bias": -261.17267008143523,
+        "bias_pct": 5.284167781677316,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 7.861646469532388,
+        "standard_error": 66.2522448560175,
+        "bias": -41.56386022748113,
+        "bias_pct": 0.8409394866151687,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9724249007873325,
+        "diurnal_mean_control": 1.0262925364585902
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 48.21955602472129,
+        "standard_error": 1.7158845592432583,
+        "bias": -1.205950672292225,
+        "bias_pct": 0.024399358810520667,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9724249007873325,
+        "diurnal_mean_control": 1.0262925364585902
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 113.00922503300978,
+        "standard_error": 66.38837610662756,
+        "bias": 63.58371833599627,
+        "bias_pct": 1.2864555688983608,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0349017110530025,
+        "diurnal_mean_control": 0.9650982889469976
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 49.133022851475296,
+        "standard_error": 1.8918698399682952,
+        "bias": -0.2924838455382215,
+        "bias_pct": 0.005917670148152361,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0349017110530025,
+        "diurnal_mean_control": 0.9650982889469976
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 49.02704917145297,
+        "standard_error": 1.9250989958876799,
+        "bias": -0.3984575255605449,
+        "bias_pct": 0.008061779275287052,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 436,
+      "true_ate": 49.01026033445771,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -211.1914542669856,
+        "standard_error": 60.15804530487808,
+        "bias": -260.2017146014433,
+        "bias_pct": 5.30912737099874,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 63.6792068566416,
+        "standard_error": 66.9007879683451,
+        "bias": 14.668946522183887,
+        "bias_pct": 0.29930358300648674,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0082405690924683,
+        "diurnal_mean_control": 0.9923277460173571
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 51.27677680205905,
+        "standard_error": 2.1228001419508593,
+        "bias": 2.2665164676013347,
+        "bias_pct": 0.046245754503936226,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0082405690924683,
+        "diurnal_mean_control": 0.9923277460173571
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": -52.24081510994097,
+        "standard_error": 66.60664663995799,
+        "bias": -101.25107544439868,
+        "bias_pct": 2.06591588686608,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9432663528549805,
+        "diurnal_mean_control": 1.0567336471450197
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 52.517971807699105,
+        "standard_error": 1.9943577436629258,
+        "bias": 3.507711473241393,
+        "bias_pct": 0.07157096186194346,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9432663528549805,
+        "diurnal_mean_control": 1.0567336471450197
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 46.68668459173887,
+        "standard_error": 1.700692635136063,
+        "bias": -2.3235757427188446,
+        "bias_pct": 0.04740998572262643,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 437,
+      "true_ate": 34.4005007151642,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 294.0854356768459,
+        "standard_error": 65.76865383374326,
+        "bias": 259.68493496168173,
+        "bias_pct": 7.548870788593177,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": -20.644776695930773,
+        "standard_error": 66.41571238378478,
+        "bias": -55.04527741109497,
+        "bias_pct": 1.6001301221418058,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.971136449232865,
+        "diurnal_mean_control": 1.03848473435618
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 34.956230401405946,
+        "standard_error": 2.131903879335873,
+        "bias": 0.5557296862417473,
+        "bias_pct": 0.016154697597083937,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.971136449232865,
+        "diurnal_mean_control": 1.03848473435618
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 16.127142184443983,
+        "standard_error": 66.4724075640696,
+        "bias": -18.273358530720216,
+        "bias_pct": 0.5311945509753896,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9886025279371696,
+        "diurnal_mean_control": 1.0113974720628305
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 35.831718855190424,
+        "standard_error": 1.9502066931532964,
+        "bias": 1.4312181400262247,
+        "bias_pct": 0.04160457290656019,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9886025279371696,
+        "diurnal_mean_control": 1.0113974720628305
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 32.33719345318775,
+        "standard_error": 1.806255277978948,
+        "bias": -2.0633072619764476,
+        "bias_pct": 0.0599789892321804,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 438,
+      "true_ate": 95.3077374122788,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 356.93212077505245,
+        "standard_error": 68.45813759807538,
+        "bias": 261.62438336277364,
+        "bias_pct": 2.7450487281116356,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 117.10115718491909,
+        "standard_error": 67.33663122155258,
+        "bias": 21.79341977264029,
+        "bias_pct": 0.22866369892264987,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0137937091425266,
+        "diurnal_mean_control": 0.9848269199432206
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 94.52153823430733,
+        "standard_error": 2.00715199377751,
+        "bias": -0.7861991779714685,
+        "bias_pct": 0.008249059303239529,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0137937091425266,
+        "diurnal_mean_control": 0.9848269199432206
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 30.16633622430959,
+        "standard_error": 67.81264141764922,
+        "bias": -65.14140118796921,
+        "bias_pct": 0.6834849190279575,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9692707481350301,
+        "diurnal_mean_control": 1.0307292518649702
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 90.83315878362356,
+        "standard_error": 1.8953318908159626,
+        "bias": -4.474578628655237,
+        "bias_pct": 0.04694874466801437,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.9692707481350301,
+        "diurnal_mean_control": 1.0307292518649702
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 99.55401813201024,
+        "standard_error": 2.5160522121561026,
+        "bias": 4.246280719731445,
+        "bias_pct": 0.04455336822616023,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 439,
+      "true_ate": 71.95742900813757,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -189.1274724528554,
+        "standard_error": 60.44932344425462,
+        "bias": -261.08490146099297,
+        "bias_pct": 3.628324483792594,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 46.851475658059485,
+        "standard_error": 66.83621936765572,
+        "bias": -25.10595335007808,
+        "bias_pct": 0.3489000885125966,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9827429721230939,
+        "diurnal_mean_control": 1.0146021005112285
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 68.98930931707325,
+        "standard_error": 1.9731392420388816,
+        "bias": -2.9681196910643166,
+        "bias_pct": 0.0412482732078804,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9827429721230939,
+        "diurnal_mean_control": 1.0146021005112285
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 82.35115410989351,
+        "standard_error": 67.16141146526945,
+        "bias": 10.393725101755948,
+        "bias_pct": 0.14444269681425856,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0051060970164754,
+        "diurnal_mean_control": 0.9948939029835246
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 73.39857736582978,
+        "standard_error": 2.0258865096626972,
+        "bias": 1.4411483576922137,
+        "bias_pct": 0.020027791119791624,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0051060970164754,
+        "diurnal_mean_control": 0.9948939029835246
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 69.70201314083295,
+        "standard_error": 2.0452835901145257,
+        "bias": -2.2554158673046203,
+        "bias_pct": 0.03134375280486409,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 440,
+      "true_ate": 30.413910893162644,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -230.6649618800875,
+        "standard_error": 60.01746890434288,
+        "bias": -261.07887277325017,
+        "bias_pct": 8.584192729779561,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 74.04013205156468,
+        "standard_error": 66.41093998884817,
+        "bias": 43.62622115840204,
+        "bias_pct": 1.4344166822757956,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0248091934940955,
+        "diurnal_mean_control": 0.9769017853675664
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 34.65324632517798,
+        "standard_error": 1.944515668192258,
+        "bias": 4.239335432015338,
+        "bias_pct": 0.13938804012766354,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.0248091934940955,
+        "diurnal_mean_control": 0.9769017853675664
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 67.74370892034915,
+        "standard_error": 66.27752721386415,
+        "bias": 37.329798027186506,
+        "bias_pct": 1.227392233715613,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0242057030526464,
+        "diurnal_mean_control": 0.9757942969473539
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 27.302991718564435,
+        "standard_error": 1.7461127749366485,
+        "bias": -3.1109191745982088,
+        "bias_pct": 0.10228606197756616,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0242057030526464,
+        "diurnal_mean_control": 0.9757942969473539
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 30.318456973442608,
+        "standard_error": 1.8024614679472222,
+        "bias": -0.09545391972003614,
+        "bias_pct": 0.003138495409398176,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 441,
+      "true_ate": 23.227996466307815,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 282.3667169477684,
+        "standard_error": 65.3053037729217,
+        "bias": 259.1387204814606,
+        "bias_pct": 11.156309622198414,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 0.4214979836257271,
+        "standard_error": 66.32137492337276,
+        "bias": -22.806498482682088,
+        "bias_pct": 0.9818538811887151,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9838634970962569,
+        "diurnal_mean_control": 1.0173317994151314
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 26.013140087051966,
+        "standard_error": 2.143970331458373,
+        "bias": 2.785143620744151,
+        "bias_pct": 0.11990459981273024,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9838634970962569,
+        "diurnal_mean_control": 1.0173317994151314
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 109.26274163456083,
+        "standard_error": 65.82740903961637,
+        "bias": 86.03474516825301,
+        "bias_pct": 3.7039244987421243,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0532761651046523,
+        "diurnal_mean_control": 0.9467238348953482
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 22.106583073583625,
+        "standard_error": 2.1921486613077192,
+        "bias": -1.1214133927241896,
+        "bias_pct": 0.04827852433811063,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0532761651046523,
+        "diurnal_mean_control": 0.9467238348953482
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 23.280874720624524,
+        "standard_error": 2.025312195060808,
+        "bias": 0.05287825431670967,
+        "bias_pct": 0.0022764879611295585,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 442,
+      "true_ate": 49.754925615156665,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 310.5597257228882,
+        "standard_error": 66.38601761708254,
+        "bias": 260.8048001077315,
+        "bias_pct": 5.241788564312183,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 131.88689381834456,
+        "standard_error": 66.4798017422719,
+        "bias": 82.1319682031879,
+        "bias_pct": 1.6507303988043411,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.041379187504634,
+        "diurnal_mean_control": 0.9474372483049246
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 52.63475343703516,
+        "standard_error": 2.0041202603058643,
+        "bias": 2.879827821878493,
+        "bias_pct": 0.05788025579926143,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.041379187504634,
+        "diurnal_mean_control": 0.9474372483049246
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 231.95380123876578,
+        "standard_error": 66.23210744613009,
+        "bias": 182.19887562360913,
+        "bias_pct": 3.6619263996669815,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1043533295294665,
+        "diurnal_mean_control": 0.8956466704705338
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 54.523049911102106,
+        "standard_error": 2.0778405039988788,
+        "bias": 4.768124295945441,
+        "bias_pct": 0.09583220629904719,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1043533295294665,
+        "diurnal_mean_control": 0.8956466704705338
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 50.45720629939444,
+        "standard_error": 2.200227050153893,
+        "bias": 0.7022806842377776,
+        "bias_pct": 0.01411479718952377,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 443,
+      "true_ate": 47.23625444430375,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 308.7536180284252,
+        "standard_error": 66.56865896021328,
+        "bias": 261.5173635841214,
+        "bias_pct": 5.536369609755499,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": -25.601394244136486,
+        "standard_error": 65.90340269821806,
+        "bias": -72.83764868844024,
+        "bias_pct": 1.5419861194609128,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9576213297159977,
+        "diurnal_mean_control": 1.0455178310457807
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 48.314253030435715,
+        "standard_error": 1.9394961873859216,
+        "bias": 1.0779985861319616,
+        "bias_pct": 0.022821423900216926,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9576213297159977,
+        "diurnal_mean_control": 1.0455178310457807
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": -90.15055519418218,
+        "standard_error": 64.97359438695231,
+        "bias": -137.38680963848594,
+        "bias_pct": 2.908503463171041,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.9164997749692466,
+        "diurnal_mean_control": 1.0835002250307535
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 47.19775332612023,
+        "standard_error": 1.8325863355768264,
+        "bias": -0.03850111818352531,
+        "bias_pct": 0.000815075594719771,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9164997749692466,
+        "diurnal_mean_control": 1.0835002250307535
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 48.95000011732202,
+        "standard_error": 1.8229514503620197,
+        "bias": 1.7137456730182663,
+        "bias_pct": 0.03628030404144222,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 444,
+      "true_ate": 33.18803546045007,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -228.95062358610573,
+        "standard_error": 60.29499725283896,
+        "bias": -262.1386590465558,
+        "bias_pct": 7.898589217760252,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 11.16527426978962,
+        "standard_error": 65.30420077622777,
+        "bias": -22.022761190660447,
+        "bias_pct": 0.6635753181867244,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9773098335012481,
+        "diurnal_mean_control": 1.014319037110863
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 32.98389055536376,
+        "standard_error": 2.4304111804005073,
+        "bias": -0.20414490508630934,
+        "bias_pct": 0.006151159665042159,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9773098335012481,
+        "diurnal_mean_control": 1.014319037110863
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": -17.803222277285386,
+        "standard_error": 66.21774995054028,
+        "bias": -50.99125773773545,
+        "bias_pct": 1.536434954051479,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9714831846311751,
+        "diurnal_mean_control": 1.0285168153688249
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 33.03804856491916,
+        "standard_error": 2.2294963813522712,
+        "bias": -0.14998689553090827,
+        "bias_pct": 0.004519306233405907,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9714831846311751,
+        "diurnal_mean_control": 1.0285168153688249
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 38.12617858824069,
+        "standard_error": 2.153936829546529,
+        "bias": 4.9381431277906245,
+        "bias_pct": 0.14879287246982043,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 445,
+      "true_ate": 53.522435431170855,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 315.3067551962821,
+        "standard_error": 66.73949822534131,
+        "bias": 261.78431976511126,
+        "bias_pct": 4.891113748023713,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 30.2249419529835,
+        "standard_error": 67.06469893173988,
+        "bias": -23.297493478187356,
+        "bias_pct": 0.43528462952975344,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9887834988387607,
+        "diurnal_mean_control": 1.0117636475593486
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 53.614471079924854,
+        "standard_error": 2.115451578120396,
+        "bias": 0.09203564875399906,
+        "bias_pct": 0.0017195713911852103,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9887834988387607,
+        "diurnal_mean_control": 1.0117636475593486
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 122.11867906020996,
+        "standard_error": 67.09669142723368,
+        "bias": 68.5962436290391,
+        "bias_pct": 1.2816353194027008,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.042902673643681,
+        "diurnal_mean_control": 0.957097326356319
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 51.723902872571045,
+        "standard_error": 2.1202688498081144,
+        "bias": -1.7985325585998098,
+        "bias_pct": 0.03360333931202923,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.042902673643681,
+        "diurnal_mean_control": 0.957097326356319
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 52.30141117373137,
+        "standard_error": 2.117693499793093,
+        "bias": -1.2210242574394883,
+        "bias_pct": 0.022813316464451797,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 446,
+      "true_ate": 41.026789036595446,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -218.32468540708578,
+        "standard_error": 60.26964184166928,
+        "bias": -259.35147444368124,
+        "bias_pct": 6.321515296075025,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 146.73307371734722,
+        "standard_error": 66.3448063371289,
+        "bias": 105.70628468075178,
+        "bias_pct": 2.5765185909738864,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0571347023545086,
+        "diurnal_mean_control": 0.9414885578297202
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 45.80460711470034,
+        "standard_error": 2.0532327441192795,
+        "bias": 4.777818078104893,
+        "bias_pct": 0.11645605689109942,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.0571347023545086,
+        "diurnal_mean_control": 0.9414885578297202
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": -97.57603589745418,
+        "standard_error": 65.24319571547883,
+        "bias": -138.60282493404964,
+        "bias_pct": 3.3783493222054846,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.9176094118465421,
+        "diurnal_mean_control": 1.0823905881534581
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 42.98488146090132,
+        "standard_error": 2.2731682479524546,
+        "bias": 1.9580924243058746,
+        "bias_pct": 0.047727167304252784,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9176094118465421,
+        "diurnal_mean_control": 1.0823905881534581
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 45.62934056671736,
+        "standard_error": 1.8581877779700244,
+        "bias": 4.602551530121914,
+        "bias_pct": 0.11218405432646676,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 447,
+      "true_ate": 74.86222922854265,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": -187.48335397588187,
+        "standard_error": 60.28074924846064,
+        "bias": -262.34558320442454,
+        "bias_pct": 3.5043784550353774,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 0.8225319785172974,
+        "diurnal_mean_control": 1.1774680214827025
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 17.320464146404674,
+        "standard_error": 68.23743755757675,
+        "bias": -57.54176508213797,
+        "bias_pct": 0.7686354744589823,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9669129234154167,
+        "diurnal_mean_control": 1.0286754663733058
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 73.20782547170465,
+        "standard_error": 2.0565789197095126,
+        "bias": -1.6544037568379935,
+        "bias_pct": 0.02209931194791646,
+        "covers_truth": true,
+        "diurnal_mean_treated": 0.9669129234154167,
+        "diurnal_mean_control": 1.0286754663733058
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 117.44731852929681,
+        "standard_error": 67.08519713555182,
+        "bias": 42.58508930075416,
+        "bias_pct": 0.5688461289437236,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.021873553577884,
+        "diurnal_mean_control": 0.9781264464221161
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 74.6624660627212,
+        "standard_error": 2.21337525322627,
+        "bias": -0.1997631658214516,
+        "bias_pct": 0.002668410597440346,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.021873553577884,
+        "diurnal_mean_control": 0.9781264464221161
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 74.700611060234,
+        "standard_error": 2.0825304039190824,
+        "bias": -0.1616181683086495,
+        "bias_pct": 0.002158874641780364,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 448,
+      "true_ate": 2.888898159279935,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 265.9802228200872,
+        "standard_error": 64.6240199250924,
+        "bias": 263.09132466080723,
+        "bias_pct": 91.06978167980257,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": -132.92929245855657,
+        "standard_error": 64.42183153523806,
+        "bias": -135.8181906178365,
+        "bias_pct": 47.01383819348257,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.9235555378581108,
+        "diurnal_mean_control": 1.078286497374224
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": -2.1627676614578526,
+        "standard_error": 2.041643425075775,
+        "bias": -5.051665820737788,
+        "bias_pct": 1.7486479419533874,
+        "covers_truth": false,
+        "diurnal_mean_treated": 0.9235555378581108,
+        "diurnal_mean_control": 1.078286497374224
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 6.300162480887366,
+        "standard_error": 65.51216129826446,
+        "bias": 3.4112643216074305,
+        "bias_pct": 1.1808184759471398,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0050541938645194,
+        "diurnal_mean_control": 0.9949458061354806
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": -0.8127604932973711,
+        "standard_error": 1.871208305595936,
+        "bias": -3.701658652577306,
+        "bias_pct": 1.2813392679442717,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.0050541938645194,
+        "diurnal_mean_control": 0.9949458061354806
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 3.5718262864210146,
+        "standard_error": 2.259262326658183,
+        "bias": 0.6829281271410794,
+        "bias_pct": 0.23639743926151446,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    },
+    {
+      "seed": 449,
+      "true_ate": 27.235495081157165,
+      "alternating_4h_hajek": {
+        "identified": true,
+        "point_estimate": 289.4510188868371,
+        "standard_error": 65.51344904546158,
+        "bias": 262.21552380567994,
+        "bias_pct": 9.62771277057098,
+        "covers_truth": false,
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "alternating_4h_adjusted": {
+        "identified": false,
+        "error": "regression-adjustment design matrix is rank deficient",
+        "diurnal_mean_treated": 1.1774680214827025,
+        "diurnal_mean_control": 0.8225319785172974
+      },
+      "iid_4h_hajek": {
+        "identified": true,
+        "point_estimate": 93.4356583081676,
+        "standard_error": 66.16652466829417,
+        "bias": 66.20016322701044,
+        "bias_pct": 2.430657604341142,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0327851638461782,
+        "diurnal_mean_control": 0.9612538972726986
+      },
+      "iid_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 27.949963664866587,
+        "standard_error": 1.7273000272467611,
+        "bias": 0.7144685837094222,
+        "bias_pct": 0.026232994171041385,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0327851638461782,
+        "diurnal_mean_control": 0.9612538972726986
+      },
+      "stratified_4h_hajek": {
+        "identified": true,
+        "point_estimate": 59.881778969862125,
+        "standard_error": 65.67596472709572,
+        "bias": 32.64628388870496,
+        "bias_pct": 1.1986668056308343,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.018280866817014,
+        "diurnal_mean_control": 0.981719133182986
+      },
+      "stratified_4h_adjusted": {
+        "identified": true,
+        "point_estimate": 26.03013933865047,
+        "standard_error": 1.8076653325724823,
+        "bias": -1.2053557425066934,
+        "bias_pct": 0.04425679573346977,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.018280866817014,
+        "diurnal_mean_control": 0.981719133182986
+      },
+      "alternating_24h_hajek": {
+        "identified": true,
+        "point_estimate": 27.619062137156675,
+        "standard_error": 1.8274666360490583,
+        "bias": 0.38356705599951013,
+        "bias_pct": 0.014083351701760708,
+        "covers_truth": true,
+        "diurnal_mean_treated": 1.0,
+        "diurnal_mean_control": 1.0
+      }
+    }
+  ]
+}

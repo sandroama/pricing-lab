@@ -1,0 +1,490 @@
+{
+  "phase": 4,
+  "estimand": "mean log-log price elasticity (per-zone mean)",
+  "n_replicates": 20,
+  "n_zones": 8,
+  "n_time_buckets": 336,
+  "rows_per_replicate": 2688,
+  "seeds": [
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119
+  ],
+  "dml_library": "econml.dml.LinearDML (linear nuisances, cv=3)",
+  "dml_estimator_id": "linear_dml",
+  "dml_nuisance_models": "sklearn.linear_model.LinearRegression",
+  "ols_summary": {
+    "mean_bias": 3.3095298357276897,
+    "rmse": 3.3131729765420426,
+    "bias_ci95_low": 3.2349445716930845,
+    "bias_ci95_high": 3.384115099762295,
+    "n_replicates": 20
+  },
+  "dml_summary": {
+    "mean_bias": -0.003338261849633789,
+    "rmse": 0.02736707590820707,
+    "bias_ci95_low": -0.016381052604029972,
+    "bias_ci95_high": 0.009704528904762394,
+    "n_replicates": 20
+  },
+  "ols_positive_sign_count": 20,
+  "replicates": [
+    {
+      "seed": 100,
+      "true_mean_elasticity": -0.9931841770519223,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 2.296803741151314,
+        "standard_error": 0.04926892083470813,
+        "ci95_low": 2.200236656315286,
+        "ci95_high": 2.3933708259873416,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.0251578179018743,
+        "standard_error": 0.032167355791919004,
+        "ci95_low": -1.0882058352540356,
+        "ci95_high": -0.9621098005497131,
+        "n": 2688
+      },
+      "ols_bias": 3.289987918203236,
+      "dml_bias": -0.03197364084995202
+    },
+    {
+      "seed": 101,
+      "true_mean_elasticity": -0.9740877290519098,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 2.3910560111378327,
+        "standard_error": 0.049804971422360234,
+        "ci95_low": 2.2934382671500066,
+        "ci95_high": 2.488673755125659,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.0100916904615935,
+        "standard_error": 0.030301617988365864,
+        "ci95_low": -1.0694828617187906,
+        "ci95_high": -0.9507005192043965,
+        "n": 2688
+      },
+      "ols_bias": 3.3651437401897426,
+      "dml_bias": -0.03600396140968376
+    },
+    {
+      "seed": 102,
+      "true_mean_elasticity": -1.1055907904915792,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 2.184233851515044,
+        "standard_error": 0.038337761394471835,
+        "ci95_low": 2.1090918391818794,
+        "ci95_high": 2.259375863848209,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.0923071428230262,
+        "standard_error": 0.029700345024046778,
+        "ci95_low": -1.150519819070158,
+        "ci95_high": -1.0340944665758944,
+        "n": 2688
+      },
+      "ols_bias": 3.2898246420066233,
+      "dml_bias": 0.013283647668552945
+    },
+    {
+      "seed": 103,
+      "true_mean_elasticity": -1.301808734544379,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 2.1049202305002144,
+        "standard_error": 0.046652325791732216,
+        "ci95_low": 2.013481671948419,
+        "ci95_high": 2.1963587890520095,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.2855612104209606,
+        "standard_error": 0.03120857996151912,
+        "ci95_low": -1.346730027145538,
+        "ci95_high": -1.2243923936963832,
+        "n": 2688
+      },
+      "ols_bias": 3.4067289650445933,
+      "dml_bias": 0.016247524123418344
+    },
+    {
+      "seed": 104,
+      "true_mean_elasticity": -1.1701502122910665,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 2.180218952538879,
+        "standard_error": 0.044220284624444536,
+        "ci95_low": 2.0935471946749677,
+        "ci95_high": 2.26689071040279,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.1636783979307486,
+        "standard_error": 0.031267855067134136,
+        "ci95_low": -1.2249633938623314,
+        "ci95_high": -1.1023934019991657,
+        "n": 2688
+      },
+      "ols_bias": 3.3503691648299454,
+      "dml_bias": 0.006471814360317962
+    },
+    {
+      "seed": 105,
+      "true_mean_elasticity": -1.1481208405834291,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 2.175896054030131,
+        "standard_error": 0.04722288158173279,
+        "ci95_low": 2.0833392061299345,
+        "ci95_high": 2.2684529019303272,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.20492638247072,
+        "standard_error": 0.0321306253797015,
+        "ci95_low": -1.2679024082149348,
+        "ci95_high": -1.141950356726505,
+        "n": 2688
+      },
+      "ols_bias": 3.32401689461356,
+      "dml_bias": -0.05680554188729081
+    },
+    {
+      "seed": 106,
+      "true_mean_elasticity": -1.3539170608494322,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 1.8879893007944302,
+        "standard_error": 0.04857907459516032,
+        "ci95_low": 1.792774314587916,
+        "ci95_high": 1.9832042870009443,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.3683123997209135,
+        "standard_error": 0.033360639135646776,
+        "ci95_low": -1.433699252426781,
+        "ci95_high": -1.3029255470150458,
+        "n": 2688
+      },
+      "ols_bias": 3.2419063616438626,
+      "dml_bias": -0.014395338871481256
+    },
+    {
+      "seed": 107,
+      "true_mean_elasticity": -1.1326734804413685,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 2.327263008372946,
+        "standard_error": 0.04408749243153389,
+        "ci95_low": 2.24085152320714,
+        "ci95_high": 2.4136744935387524,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.1126655746767558,
+        "standard_error": 0.03010421590309938,
+        "ci95_low": -1.1716698378468304,
+        "ci95_high": -1.053661311506681,
+        "n": 2688
+      },
+      "ols_bias": 3.4599364888143147,
+      "dml_bias": 0.020007905764612754
+    },
+    {
+      "seed": 108,
+      "true_mean_elasticity": -1.271395009474171,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 1.7298722211499566,
+        "standard_error": 0.0400658508896597,
+        "ci95_low": 1.6513431534062237,
+        "ci95_high": 1.8084012888936896,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.307761123993641,
+        "standard_error": 0.03184183165573941,
+        "ci95_low": -1.3701711140388904,
+        "ci95_high": -1.2453511339483918,
+        "n": 2688
+      },
+      "ols_bias": 3.0012672306241277,
+      "dml_bias": -0.03636611451947003
+    },
+    {
+      "seed": 109,
+      "true_mean_elasticity": -1.2168107796078211,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 1.8533828585822312,
+        "standard_error": 0.043030371547945284,
+        "ci95_low": 1.7690433303482584,
+        "ci95_high": 1.937722386816204,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.228811869103779,
+        "standard_error": 0.026871920179178655,
+        "ci95_low": -1.2814808326549691,
+        "ci95_high": -1.176142905552589,
+        "n": 2688
+      },
+      "ols_bias": 3.0701936381900525,
+      "dml_bias": -0.012001089495957906
+    },
+    {
+      "seed": 110,
+      "true_mean_elasticity": -1.0909380978507977,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 2.2775920772474887,
+        "standard_error": 0.047680181904053424,
+        "ci95_low": 2.184138920715544,
+        "ci95_high": 2.371045233779433,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.1090029866900055,
+        "standard_error": 0.03165446501753146,
+        "ci95_low": -1.1710457381243673,
+        "ci95_high": -1.0469602352556437,
+        "n": 2688
+      },
+      "ols_bias": 3.3685301750982863,
+      "dml_bias": -0.01806488883920787
+    },
+    {
+      "seed": 111,
+      "true_mean_elasticity": -1.1739602771842295,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 2.441858011178886,
+        "standard_error": 0.05289034436985698,
+        "ci95_low": 2.3381929362139666,
+        "ci95_high": 2.5455230861438056,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.1642709498762156,
+        "standard_error": 0.03203880168584808,
+        "ci95_low": -1.2270670011804778,
+        "ci95_high": -1.1014748985719534,
+        "n": 2688
+      },
+      "ols_bias": 3.6158182883631156,
+      "dml_bias": 0.009689327308013862
+    },
+    {
+      "seed": 112,
+      "true_mean_elasticity": -1.3121833303937194,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 1.9083129086907884,
+        "standard_error": 0.0461689289653562,
+        "ci95_low": 1.8178218079186903,
+        "ci95_high": 1.9988040094628865,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.3169525031726785,
+        "standard_error": 0.03463890043103067,
+        "ci95_low": -1.3848447480174986,
+        "ci95_high": -1.2490602583278585,
+        "n": 2688
+      },
+      "ols_bias": 3.2204962390845076,
+      "dml_bias": -0.004769172778959163
+    },
+    {
+      "seed": 113,
+      "true_mean_elasticity": -1.3795438773369528,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 1.7789482208391063,
+        "standard_error": 0.04772132720880678,
+        "ci95_low": 1.685414419509845,
+        "ci95_high": 1.8724820221683676,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.373353697373952,
+        "standard_error": 0.030966384480213226,
+        "ci95_low": -1.43404781095517,
+        "ci95_high": -1.312659583792734,
+        "n": 2688
+      },
+      "ols_bias": 3.158492098176059,
+      "dml_bias": 0.006190179963000864
+    },
+    {
+      "seed": 114,
+      "true_mean_elasticity": -1.1581047108495466,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 2.290500843187111,
+        "standard_error": 0.05109722890117576,
+        "ci95_low": 2.1903502745408066,
+        "ci95_high": 2.3906514118334155,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.1540092104437956,
+        "standard_error": 0.026664200679416113,
+        "ci95_low": -1.2062710437754511,
+        "ci95_high": -1.10174737711214,
+        "n": 2688
+      },
+      "ols_bias": 3.4486055540366576,
+      "dml_bias": 0.004095500405751018
+    },
+    {
+      "seed": 115,
+      "true_mean_elasticity": -1.2349346181703504,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 1.963037988799403,
+        "standard_error": 0.04630708911790005,
+        "ci95_low": 1.8722760941283187,
+        "ci95_high": 2.053799883470487,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.2682493140592515,
+        "standard_error": 0.030635028806666825,
+        "ci95_low": -1.3282939705203185,
+        "ci95_high": -1.2082046575981844,
+        "n": 2688
+      },
+      "ols_bias": 3.1979726069697536,
+      "dml_bias": -0.033314695888901014
+    },
+    {
+      "seed": 116,
+      "true_mean_elasticity": -1.0178845678751434,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 2.543047263209225,
+        "standard_error": 0.053003083019936885,
+        "ci95_low": 2.4391612204901487,
+        "ci95_high": 2.6469333059283016,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.0191991780455976,
+        "standard_error": 0.02990677889623088,
+        "ci95_low": -1.0778164646822102,
+        "ci95_high": -0.9605818914089851,
+        "n": 2688
+      },
+      "ols_bias": 3.5609318310843685,
+      "dml_bias": -0.0013146101704542001
+    },
+    {
+      "seed": 117,
+      "true_mean_elasticity": -1.2194731694959016,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 1.9969237173481824,
+        "standard_error": 0.04009321905973164,
+        "ci95_low": 1.9183410079911083,
+        "ci95_high": 2.0755064267052563,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.1582730694261407,
+        "standard_error": 0.029179547995567285,
+        "ci95_low": -1.2154649834974527,
+        "ci95_high": -1.1010811553548288,
+        "n": 2688
+      },
+      "ols_bias": 3.216396886844084,
+      "dml_bias": 0.06120010006976084
+    },
+    {
+      "seed": 118,
+      "true_mean_elasticity": -1.0941773271362805,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 2.3752138862526793,
+        "standard_error": 0.046790823520640804,
+        "ci95_low": 2.2835038721522234,
+        "ci95_high": 2.466923900353135,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.0920780513006527,
+        "standard_error": 0.03240732210052289,
+        "ci95_low": -1.1555964026176775,
+        "ci95_high": -1.028559699983628,
+        "n": 2688
+      },
+      "ols_bias": 3.4693912133889597,
+      "dml_bias": 0.0020992758356277452
+    },
+    {
+      "seed": 119,
+      "true_mean_elasticity": -1.197697670955251,
+      "ols": {
+        "estimator": "naive_ols_loglog",
+        "point_estimate": 1.9368891063926925,
+        "standard_error": 0.042370875404471584,
+        "ci95_low": 1.8538421905999283,
+        "ci95_high": 2.019936022185457,
+        "n": 2688
+      },
+      "dml": {
+        "estimator": "linear_dml",
+        "point_estimate": -1.158739128735625,
+        "standard_error": 0.03448738278066244,
+        "ci95_low": -1.2263343989857234,
+        "ci95_high": -1.0911438584855266,
+        "n": 2688
+      },
+      "ols_bias": 3.1345867773479434,
+      "dml_bias": 0.03895854221962591
+    }
+  ]
+}
